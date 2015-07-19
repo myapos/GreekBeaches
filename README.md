@@ -14,4 +14,4 @@ of University Of Crete www.csd.uoc.gr and Monades Aristeias Logismikou http://ma
 
 Apostolakis Myron
 
-You can visit our application in the following url http://147.52.17.225/OliveOilAdmin/
+You can visit our application in the following url http://ellaksrv.datacenter.uoc.gr/~user738/greekbeaches/index.php
