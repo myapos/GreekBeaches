@@ -1,0 +1,195 @@
+body {
+background-color:#CCCC99;
+
+}
+
+.footer{
+background-color:#303030;
+margin:10px;
+color: #ffffff; /*changes color of text*/
+border-radius: 5px;
+box-shadow: 2px 2px 2px #888888;
+
+}
+
+.custom-form{
+
+}
+.big_wrapper{
+background-color:#CCC;
+border: 2px solid #a7a785;
+
+/*
+padding:30px;*/
+margin:30px;
+border-radius: 5px;
+box-shadow: 2px 2px 2px #888888;
+}
+
+.custom-nav{
+border-radius: 5px;
+box-shadow: 2px 2px 2px #888888;
+}
+/*
+.container{
+background-color:#CCC;
+}
+*/
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.logo-top {
+    padding: 6px;
+}
+
+.my-btn{
+    background: #CCC;
+    background-color: 2px solid #8AC007;
+    border-color: #ffffff;
+}
+/
+.my-btn:hover { 
+  border-color: #C0C0C0; 
+  background-color: #C0C0C0; 
+}
+
+
+.my-btn:active {
+  background: #C0C0C0;
+}
+
+/* unvisited link */
+a:link {
+    color: #6b725a;
+}
+
+/* visited link */
+a:visited {
+    color: #6b725a;
+}
+
+/* mouse over link */
+a:hover {
+    color: #ddddc5;
+}
+
+/* selected link */
+a:active {
+    color: #ddddc5;
+}
+
+/*css for contact form*/
+/*@import url(http://fonts.googleapis.com/css?family=Fauna+One|Muli);*/
+
+.mainform{
+border: 2px solid #a7a785;
+border-radius: 5px;
+box-shadow: 2px 2px 2px #888888;
+padding:5px;
+}
+h3{
+text-align: center;
+}
+#map_canvas{
+	border: 2px solid #a7a785;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #888888;
+	margin:30px;
+	height: 200px;
+	/*width: 600px;*/
+}
+#wall{
+	border: 2px solid #a7a785;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #888888;
+	margin:30px;
+	/*height: 200px;*/
+}
+
+#page {
+  /*width: 550px;
+  margin: 100px auto 100px;*/
+}
+
+#wall li {
+  list-style: none;
+  overflow: hidden;
+  position: relative;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+
+.beach-items-container{
+    
+    padding: 10px;
+    margin: auto;
+    
+    
+}
+
+.beach-item{
+    background-color: #ccc;
+    overflow: hidden;
+     
+}
+
+.beach-img{
+    
+    width:100%;
+}
+
+.beach-description{
+    text-align: justify; 
+    font-size:12px;
+    /*height: 100px;
+    overflow: hidden;*/
+}
+
+.beach-details{
+    
+    /*background-color: #91e5b6;*/
+    
+}
+
+.beach-details-title{
+   width:60%; 
+   float:left;
+}
+
+.beach-details-value{
+   width:40%; 
+   float:left;
+}
+.logo-top {
+    
+    padding: 6px;
+    
+}
+
+@media only screen and (min-width: 500px) {
+    .beach-items-container{
+    
+    }
+}
+
+.beach_details_modal {
+    width : 100%;
+    height : 100%;
+    min-width : 200px;
+}
+
+#alerts{
+    color: red;
+    font-size: 75%;
+}
+
+.input_error{
+    border: 1px solid red;
+}
+
