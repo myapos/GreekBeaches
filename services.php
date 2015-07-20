@@ -326,11 +326,10 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
   		<div class="col-sm-6">
 			<div class="blog">
 			    <section class="post">
-				<h2 class="post-title" id="introtitle">Welcome!</h2>
-				<p class="post-excerpt" id="introtext">Welcome to our web site. Here you can find useful information
-				for the best greek beaches. Greece is famous for beautiful combination of sun and sea. Also you can
-				be informed for historical data for each beach that is displayed, how you can reach it and useful 
-				points of interests near them.We hope to find our material useful. Have a nice navigation. </p>
+				<h2 class="post-title" id="introtitle">Welcome to services page!</h2>
+				<p class="post-excerpt" id="gelocation">Geolocation Find Nearest Beach </p>
+				<p class="post-excerpt" id="choose_beach">Select beaches from category </p>
+				<p class="post-excerpt" id="suggest">Suggest </p>
 				<!--
 				<div data-translate="hello">Hello there, how are you?</div>
 				<div id="msgid1">Hello there, how are you?</div>

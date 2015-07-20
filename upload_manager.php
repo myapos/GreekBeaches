@@ -56,6 +56,7 @@ if(isset($_FILES["image"]["error"])){
 	   $lon=$_POST['longitude']; 
 	   $desc=$_POST['description']; /**/
 	   $rating=$_POST['rating']; /**/
+	   $category=$_POST['category']; /**/
 
 		//echo "test ".$filename." ".$size." ".$type." ".$path."<br>";
 
@@ -64,8 +65,11 @@ if(isset($_FILES["image"]["error"])){
 		/*
 		$sql = "INSERT INTO ".$tbl_name_image." (name,type,size,path,latitude,longitude,description) VALUES 
 			 ('".$name."','".$type."','".$size."','".$path."','".$lat."','".$lon."','".$desc."')";*/
+	   /*
 	   $sql = "INSERT INTO ".$tbl_name_image." (name,type,size,path,latitude,longitude,description,rating) VALUES 
-			 ('".$name."','".$type."','".$size."','".$path."','".$lat."','".$lon."','".$desc."','".$rating."')";
+			 ('".$name."','".$type."','".$size."','".$path."','".$lat."','".$lon."','".$desc."','".$rating."')";*/
+	   $sql = "INSERT INTO ".$tbl_name_image." (name,type,size,path,latitude,longitude,description,rating,category) VALUES 
+			 ('".$name."','".$type."','".$size."','".$path."','".$lat."','".$lon."','".$desc."','".$rating."','".$category."')";
 		if ($conn->query($sql) === TRUE) {
 			    //echo "Image uploaded succesfully!";
 			    header("location:admin.php");

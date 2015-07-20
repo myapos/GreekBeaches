@@ -29,12 +29,13 @@ echo "Found images:".$result->num_rows."<br>";
 
 $image_rows=floor($result->num_rows/4);
 $left_images=$result->num_rows%4;
-//echo "tetrades:".$image_rows."<br>";
-//echo "ipoloipo:".$left_images."<br>";
+echo "tetrades:".$image_rows."<br>";
+echo "ipoloipo:".$left_images."<br>";
 /**/
+
 //echo multiple lines of html code dynamic of 4 images per row
 for ($x = 0; $x < $image_rows; $x++) {
-    //echo "The number is: $x <br>";
+echo "The number is: $x <br>";
 
 echo<<<EOL
  <div class="row">
@@ -69,14 +70,17 @@ echo<<<EOL
 		     </div><!--end of beach item-->
                 </div><!--end of col-md-3 beach-items-container-->
 EOL;
-
 } 
+echo "</div> <!--end of row-->";
+} //end of double for
 if($left_images!=0){
 
 echo<<<EOL
-</div>
+
 <div class="row">
 EOL;
+
+
 //echo multiple lines of html code dynamic left images
 for ($x = 0; $x < $left_images; $x++) {
 //echo "The number is: $x <br>";
@@ -112,7 +116,7 @@ echo<<<EOL
 		     </div><!--end of beach item-->
                 </div><!--end of col-md-3 beach-items-container-->
 EOL;
-} 
+}//end of for
 
 echo<<<EOL
 </div>
@@ -120,8 +124,9 @@ echo<<<EOL
 EOL;
 
 /**/
-}//end of double for
+//end of double for
 }//end of if left_images!=0
+
 } //end of if counting result rows
 
 else{

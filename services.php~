@@ -101,8 +101,6 @@ jQuery(document).ready(function(){
 		var link4_text_greek="Φωτογραφίες";
 		var link5_text_greek="Υπηρεσίες";
 		var link6_text_greek="Επικοινωνία";
-		var link7_text_greek="Εγγραφή";
-		var link8_text_greek="Διαχείριση";
 
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
@@ -119,8 +117,6 @@ jQuery(document).ready(function(){
 		$("#link4").html(link4_text_greek);
 		$("#link5").html(link5_text_greek);
 		$("#link6").html(link6_text_greek);
-		$("#link7").html(link7_text_greek);
-		$("#link8").html(link8_text_greek);
 		
 	}
 
@@ -153,8 +149,6 @@ jQuery(document).ready(function(){
 		var link4_text_english="Gallery";
 		var link5_text_english="Services";
 		var link6_text_english="Contact Us";
-		var link7_text_english="Register";
-		var link8_text_english="Admin area";
 
 
 		$("#title").html(title_english);
@@ -171,8 +165,6 @@ jQuery(document).ready(function(){
 		$("#link4").html(link4_text_english);
 		$("#link5").html(link5_text_english);
 		$("#link6").html(link6_text_english);
-		$("#link7").html(link7_text_english);
-		$("#link8").html(link8_text_english);
 		
 
 	}
@@ -192,7 +184,7 @@ jQuery(document).ready(function(){
 <div class="container">  
 	<div class="row">
                 <div class="col-md-2 col-centered text-center logo-top">
-                <a href="home.php"><img src="images/logo_beaches.png" alt="Προβολή ελληνικών παραλιών"  width="80" height="80"/></a>
+                <a href="index.php"><img src="images/logo_beaches.png" alt="Προβολή ελληνικών παραλιών"  width="80" height="80"/></a>
                 </div>
         </div>  
 </div>
@@ -279,7 +271,6 @@ jQuery(document).ready(function(){
 		</div>
 	</div>
 </div>
-
 <div class="container">
 	<div class="row">
                 <div class="col-xs-12">
@@ -335,56 +326,14 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
   		<div class="col-sm-6">
 			<div class="blog">
 			    <section class="post">
-				<h2 class="post-title" id="introtitle">Administration Panel</h2>
-				<p class="post-excerpt" id="introtext">Please select your file to upload to database </p>
-				<form role="form" method="post" action="upload_manager.php" enctype="multipart/form-data">
-				   <div class="form-group">
-				    <label for="image">Select image to upload:</label>
-				    <input type="file" id="image" name="image">
-				   </div>  
-				  <div class="form-group">
-				    <label for="latitude">latitude:</label>
-				    <input type="text" class="form-control" id="latitude" name="latitude">
-				  </div>
-				  <div class="form-group">
-				    <label for="longitude">longitude:</label>
-				    <input type="text" class="form-control" id="longitude" name="longitude">
-				  </div>
-				  <div class="form-group">
-				    <label for="description">Description:</label>
-				    <textarea class="form-control" rows="5" id="description" name="description"></textarea>
-				  </div>
-				  <div class="form-group">
-				    <label for="rating">Rating:</label>
-				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="rating" name="rating">
-   				 <option value="" disabled="disabled" selected="selected">Please select rating</option>
-    				 <option value="1">One</option>
-    				 <option value="2">Two</option>
-    				 <option value="3">Three</option>
-    				 <option value="4">Four</option>
-    				 <option value="5">Five</option>
-    				 <option value="6">Six</option>
-    				 <option value="7">Seven</option>
-    				 <option value="8">Eight</option>
-    				 <option value="9">Nine</option>
-    				 <option value="10">Ten</option>    				 						
-					</select>
-				  </div>
-				  <div class="form-group">
-				    <label for="category">Category:</label>
-				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="category" name="category">
-   				 <option value="" disabled="disabled" selected="selected">Please select category</option>
-    				 <option value="Swimming">Swimming</option>
-    				 <option value="Sea sports">Sea sport</option>
-    				 <option value="Fishing">Fishing</option>
-    				 <option value="Sand">Sand</option>
-    				 <option value="Rock Beach">Rock Beach</option>		
-					</select>
-				  </div>
-				    <input type="submit" value="Upload Image" name="submit">
-				</form>
+				<h2 class="post-title" id="introtitle">Welcome to services page!</h2>
+				<p class="post-excerpt" id="gelocation">Geolocation </p>
+				<p class="post-excerpt" id="choose_beach">Select beaches from category </p>
+				<p class="post-excerpt" id="suggest">Suggest </p>
+				<!--
+				<div data-translate="hello">Hello there, how are you?</div>
+				<div id="msgid1">Hello there, how are you?</div>
+				<div id="msgid2">Hello there, how are you?</div>-->
 			    </section>
 			</div>
 	       </div>

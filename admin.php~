@@ -356,8 +356,8 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 				  </div>
 				  <div class="form-group">
 				    <label for="rating">Rating:</label>
-				    <textarea class="form-control" rows="5" id="rating" name="rating"></textarea>
-				   <select>
+				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
+				   <select id="rating" name="rating">
    				 <option value="" disabled="disabled" selected="selected">Please select rating</option>
     				 <option value="1">One</option>
     				 <option value="2">Two</option>
@@ -369,6 +369,18 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
     				 <option value="8">Eight</option>
     				 <option value="9">Nine</option>
     				 <option value="10">Ten</option>    				 						
+					</select>
+				  </div>
+				  <div class="form-group">
+				    <label for="category">Category:</label>
+				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
+				   <select id="category" name="category">
+   				 <option value="" disabled="disabled" selected="selected">Please select category</option>
+    				 <option value="Swimming">Swimming</option>
+    				 <option value="Sea sport">Sea sport</option>
+    				 <option value="Fishing">Fishing</option>
+    				 <option value="Sand">Sand</option>
+    				 <option value="Rock Beach">Rock Beach</option>		
 					</select>
 				  </div>
 				    <input type="submit" value="Upload Image" name="submit">
