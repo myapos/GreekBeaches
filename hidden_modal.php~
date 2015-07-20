@@ -66,9 +66,9 @@ echo "                 <h3>".$namstr."</h3>";
 
 echo "<img src=\"".$row["path"]."\" alt=\"".$row["name"]."\" style=\"width:100%;\">";
 echo "<p style=\"text-align: justify; font-size:14px;\">latitude:".$row["latitude"]."<br>"."longitude:".$row["longitude"]." </p>";
-/*edw mporei na mpei apeikonisi se google map apo tis sintetagmenes latitude longitude
+/*edw mporei na mpei apeikonisi se google map apo tis sintetagmenes latitude longitude*/
 
-echo "<section class=\"google-map\"><div class=\"map_canvas_".$row["id"]."\">Map</div></section>";*/
+echo "<section class=\"google-map\"><div class=\"map_canvas_".$row["id"]."\">Map</div></section>";
 echo<<<EOL
                  
                  <div style="background-color: #91e5b6;">

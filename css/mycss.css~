@@ -55,6 +55,9 @@ background-color:#CCC;
   background-color: #C0C0C0; 
 }
 
+.ui-dialog-titlebar-close{
+    display: none;
+}
 
 .my-btn:active {
   background: #C0C0C0;
@@ -147,8 +150,8 @@ text-align: center;
 .beach-description{
     text-align: justify; 
     font-size:12px;
-    height: 100px;
-    overflow: hidden;
+    /*height: 100px;
+    overflow: hidden;*/
 }
 
 .beach-details{
