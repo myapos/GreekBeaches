@@ -1,6 +1,6 @@
 <?php
 //header("Content-type: image/jpeg");
-//function my_user_services(){
+function my_user_services(){
 //echo "Hello from print_images!!!"."<br>";
 //session_start();
 //$host="ellaksrv.datacenter.uoc.gr"; // Host name 
@@ -13,7 +13,7 @@ $tbl_name_image="images"; // Table name
 
 $latit=$_POST['user_latitude']; 
 $longit=$_POST['user_longitude']; 
-echo "Hey!!!!!!".$latit." ".$longit."<br>";
+//echo "Hey!!!!!!".$latit." ".$longit."<br>";
 
 
 // Create connection
@@ -25,13 +25,13 @@ if ($conn->connect_error) {
 } 
 
 else{
-echo "Preparing to execute sql query!!!"."<br>";
+//echo "Preparing to execute sql query!!!"."<br>";
 $sql="SELECT * FROM ".$tbl_name_image;
 
 $result = $conn->query($sql); //execute query
 
 if ($result->num_rows > 0) {
-echo "Found images:".$result->num_rows."<br>";
+//echo "Found images:".$result->num_rows."<br>";
 
 $nums = array();
 
@@ -47,8 +47,8 @@ $dist=harvesine($row["id"],$row["latitude"],$row["longitude"],$latit,$longit);
 $nums[] = $dist;
 }
 
-print_r($nums);
-echo "<br>";
+//print_r($nums);
+//echo "<br>";
 //step 4. find minimum distance
 
 //step 4.1 extract distances from 2dim array
@@ -56,10 +56,10 @@ $dists = array();
 
 foreach ($nums as $each_member) { 
     $i++; 
-    echo "<h2>Distance $i</h2>"; 
+    //echo "<h2>Distance $i</h2>"; 
     while (list($key, $value) = each ($each_member)) { 
                                         
-        echo "$key: $value<br />"; 
+        //echo "$key: $value<br />"; 
         $dists[]=(double)$value;
     } 
 
@@ -68,7 +68,7 @@ foreach ($nums as $each_member) {
 //step 4.2 find minimum distance
 $minimum = min($dists);
 
-echo "minimum:".$minimum."<br>";
+//echo "minimum:".$minimum."<br>";
 //step 5. find the image that correspond to minimum distance
 $min_id=0;
 $i=0;
@@ -83,7 +83,7 @@ foreach ($nums as $each_member) {
     } 
 
 }
-echo "min_id: ".$min_id." id: ".$nums[$min_id-1][0]."<br>";; 
+//echo "min_id: ".$min_id." id: ".$nums[$min_id-1][0]."<br>";; 
 //step 6. display in google map with marker in coordinates
 //select from database row with $min_id
 
@@ -107,7 +107,7 @@ echo "No images are found"."<br>";
 
 }
 //echo "asdasdasdsad"."<br>";
-//}//end of function
+}//end of function
 
 function harvesine($id,$lat_im,$lon_im,$lat_user,$lon_user){
 //$randnums = array(); 

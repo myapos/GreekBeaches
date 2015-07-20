@@ -235,6 +235,7 @@ function showError(error) {
 
 </head>
 <body>
+<?php include 'hidden_modal.php';?> <!--include external php script for setting modal windows-->
 <div class="big_wrapper">   
 <div class="container">  
 	<div class="row">
@@ -390,17 +391,23 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 					<div id="lbl_user_longitude">User longitude:<div id="user_longitude"></div>	</div>		-->	
 					<div id="mapholder1"></div>
 					
-					<form role="form" method="post" action="my_services.php">
+					<form role="form" method="post">
   						<div class="form-group">
   						  <label for="user_latitude">User latitude:</label>
-  						  <input type="text" class="form-control" id="user_latitude">
+  						  <input type="text" class="form-control" id="user_latitude" name="user_latitude">
   						</div>
   						<div class="form-group">
    						<label for="user_longitude">User longitude</label>
-    						<input type="text" class="form-control" id="user_longitude">
+    						<input type="text" class="form-control" id="user_longitude" name="user_longitude">
   						</div>
-  						<button type="submit" class="btn btn-default">Get nearest beach</button>
+  						<button type="submit" name="submit" class="btn btn-default">Get nearest beach</button>
 					</form>
+					<?php 
+						if(isset($_POST['submit'])) { 
+ 					 // do search stuff here 
+ 					 my_user_services();
+					} 
+					?>
 					<!---->
 				</p>
 				<p class="post-excerpt" id="choose_beach">Select beaches from category </p>
