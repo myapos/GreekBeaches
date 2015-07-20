@@ -116,7 +116,7 @@ echo<<<EOL
 		     </div><!--end of beach item-->
                 </div><!--end of col-md-3 beach-items-container-->
 EOL;
-}
+}//end of for
 
 echo<<<EOL
 </div>

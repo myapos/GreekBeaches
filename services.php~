@@ -47,7 +47,8 @@ session_start();
 	});
 	 
     </script> -->
-    
+<!--Google map script--> 
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>   
     
 <script type="text/javascript">
 
@@ -173,7 +174,61 @@ jQuery(document).ready(function(){
 	//alert('Button clicked4.');
 
     });
+//geolocation    
+   
+
+    $(geoloc_btn).click(function () {
+    //alert("Hey!!");
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition,showError);
+    } 
+    else 
+    {  
+         alert("Geolocation is not supported by this browser."); 
+    }    /**/
+    });
 });
+
+function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    //alert("Latitude: " + lat + " Longitude: " + lon); 
+    document.getElementById("user_latitude").value=lat;
+    document.getElementById("user_longitude").value=lon;
+    
+    latlon = new google.maps.LatLng(lat, lon)
+    mapholder = document.getElementById('mapholder1')
+    mapholder.style.height = '250px';
+    mapholder.style.width = '500px';
+
+    var myOptions = {
+    center:latlon,zoom:14,
+    mapTypeId:google.maps.MapTypeId.ROADMAP,
+    mapTypeControl:false,
+    navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+    }
+    
+    var map = new google.maps.Map(document.getElementById("mapholder1"), myOptions);
+    var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+}
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            alert("User denied the request for Geolocation.");
+            break;
+        case error.POSITION_UNAVAILABLE:
+            alert("Location information is unavailable.");
+            break;
+        case error.TIMEOUT:
+            alert("The request to get user location timed out.");
+            break;
+        case error.UNKNOWN_ERROR:
+            alert("An unknown error occurred.");
+            break;
+    }
+}
+
 
 </script>
 
@@ -327,7 +382,27 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 			<div class="blog">
 			    <section class="post">
 				<h2 class="post-title" id="introtitle">Welcome to services page!</h2>
-				<p class="post-excerpt" id="gelocation">Geolocation </p>
+				<p class="post-excerpt" id="geolocation"> Please press button to find your position and the nearest beach to 
+					you<br>
+					<a class="btn btn-default" id="geoloc_btn" role="button"> Geolocation</a><br>
+					<!--
+					<div id="lbl_user_latitude">User latitude:<div id="user_latitude"></div>	</div>
+					<div id="lbl_user_longitude">User longitude:<div id="user_longitude"></div>	</div>		-->	
+					<div id="mapholder1"></div>
+					
+					<form role="form" method="post" action="my_services.php">
+  						<div class="form-group">
+  						  <label for="user_latitude">User latitude:</label>
+  						  <input type="text" class="form-control" id="user_latitude">
+  						</div>
+  						<div class="form-group">
+   						<label for="user_longitude">User longitude</label>
+    						<input type="text" class="form-control" id="user_longitude">
+  						</div>
+  						<button type="submit" class="btn btn-default">Get nearest beach</button>
+					</form>
+					<!---->
+				</p>
 				<p class="post-excerpt" id="choose_beach">Select beaches from category </p>
 				<p class="post-excerpt" id="suggest">Suggest </p>
 				<!--

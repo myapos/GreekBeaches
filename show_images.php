@@ -29,13 +29,13 @@ echo "Found images:".$result->num_rows."<br>";
 
 $image_rows=floor($result->num_rows/4);
 $left_images=$result->num_rows%4;
-echo "tetrades:".$image_rows."<br>";
-echo "ipoloipo:".$left_images."<br>";
+//echo "tetrades:".$image_rows."<br>";
+//echo "ipoloipo:".$left_images."<br>";
 /**/
 
 //echo multiple lines of html code dynamic of 4 images per row
 for ($x = 0; $x < $image_rows; $x++) {
-echo "The number is: $x <br>";
+//echo "The number is: $x <br>";
 
 echo<<<EOL
  <div class="row">

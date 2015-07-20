@@ -492,7 +492,7 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 <div class="container">
            <div class="row">
                 <div class="col-md-12 col-centered text-center">
-                    <h3>Our beaches Static Content</h3>
+                    <h3>Our beaches</h3>
                 </div>
             </div>  
 <?php print_images()?>
