@@ -356,8 +356,8 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 				  </div>
 				  <div class="form-group">
 				    <label for="rating">Rating:</label>
-				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="rating" name="rating">
+				    <textarea class="form-control" rows="5" id="rating" name="rating"></textarea>
+				   <select>
    				 <option value="" disabled="disabled" selected="selected">Please select rating</option>
     				 <option value="1">One</option>
     				 <option value="2">Two</option>

@@ -71,6 +71,8 @@ echo<<<EOL
 EOL;
 
 } 
+if($left_images!=0){
+
 echo<<<EOL
 </div>
 <div class="row">
@@ -116,8 +118,10 @@ echo<<<EOL
 </div>
 
 EOL;
-}//end of double for
 
+/**/
+}//end of double for
+}
 } //end of if counting result rows
 
 else{
