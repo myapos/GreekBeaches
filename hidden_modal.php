@@ -1,0 +1,104 @@
+<?php
+//header("Content-type: image/jpeg");
+function print_modal_windows()
+{
+//echo "Hello from print_modal_windows!!!"."<br>";
+//session_start();
+//$host="ellaksrv.datacenter.uoc.gr"; // Host name 
+$host="localhost"; // Host name 
+$username="user738"; // Mysql username 
+$password="eYq9haWO"; // Mysql password 
+$db_name="user738_db2"; // Database name 
+$tbl_name_image="images"; // Table name
+
+// Create connection
+$conn = new mysqli($host, $username, $password, $db_name);
+
+// Check connection
+if ($conn->connect_error) {
+    echo "Connection failed!!!"."<br>";
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+else{
+//echo "Preparing to execute sql query print_modal_windows!!!"."<br>";
+$sql="SELECT * FROM ".$tbl_name_image;
+
+$result = $conn->query($sql); //execute query
+
+if ($result->num_rows > 0) {
+//echo "Found images:".$result->num_rows."<br>";
+
+$image_rows=floor($result->num_rows/4);
+$left_images=$result->num_rows%4;
+
+//echo multiple lines of html code dynamic of 4 images per row
+while($row = $result->fetch_assoc()) {
+    
+//define hidden modal window for each image
+echo<<<EOL
+ <!-- Hidden modal forms-->
+    
+     <div id="beach_details_modal_
+EOL;
+$namstr=$row["name"];
+$nam=substr($namstr,0,(strlen($namstr)-4));
+echo $row["id"]."\" title=\"Beach Details ".$nam."\" style=\"display:none;\">";
+//<div class="container beach_details_modal" title="Beach Details Agioi Apostoloi">
+//echo     "<div class=\"container beach_details_modal\" title=\"Beach Details".row["name"]."\"">;
+echo "<div class=\"container beach_details_modal_".$y.$x."\" title=\"Beach Details_".$row["name"]."\">";
+echo<<<EOL
+           <div class="row">
+                <div class="col-md-12 col-centered text-center">
+EOL;
+echo "                    <h1>Beach Information </h1>";
+echo<<<EOL
+                </div>
+            </div>  
+           
+            <div class="row">
+             <div class="col-md-12 tours-items-container">
+                 <div style="background-color: #ccc; overflow: hidden;">
+EOL;
+$namstr=$row["name"];
+$nam=substr($namstr,0,(strlen($namstr)-4));
+echo "                 <h3>".$namstr."</h3>";
+
+echo "<img src=\"".$row["path"]."\" alt=\"".$row["name"]."\" style=\"width:100%;\">";
+echo "<p style=\"text-align: justify; font-size:14px;\">latitude:".$row["latitude"]."<br>"."longitude:".$row["longitude"]." </p>";
+/*edw mporei na mpei apeikonisi se google map apo tis sintetagmenes latitude longitude*/
+
+echo "<section class=\"google-map_".$row["id"]."\"><div id=\"map_canvas_".$row["id"]."\">Map</div></section>";
+echo<<<EOL
+                 
+                 <div style="background-color: #91e5b6;">
+EOL;
+echo                  $row["description"];
+echo<<<EOL
+                 </div>
+               </div>
+             </div>
+
+           </div>    
+       </div>
+     </div><!--end of hidden modal window-->
+
+EOL;
+
+//} //end of second floor
+
+}//end of first for - while
+} //end of if counting result rows
+
+else{
+echo "No images are found"."<br>";
+}
+
+
+}
+//echo "asdasdasdsad"."<br>";
+}//end of function
+
+
+?>
+

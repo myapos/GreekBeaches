@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -98,6 +101,7 @@ jQuery(document).ready(function(){
 		var link4_text_greek="Φωτογραφίες";
 		var link5_text_greek="Υπηρεσίες";
 		var link6_text_greek="Επικοινωνία";
+		var link7_text_greek="Εγγραφή";
 
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
@@ -114,6 +118,7 @@ jQuery(document).ready(function(){
 		$("#link4").html(link4_text_greek);
 		$("#link5").html(link5_text_greek);
 		$("#link6").html(link6_text_greek);
+		$("#link7").html(link7_text_greek);
 		
 	}
 
@@ -146,6 +151,7 @@ jQuery(document).ready(function(){
 		var link4_text_english="Gallery";
 		var link5_text_english="Services";
 		var link6_text_english="Contact Us";
+		var link7_text_english="Register";
 
 
 		$("#title").html(title_english);
@@ -162,6 +168,7 @@ jQuery(document).ready(function(){
 		$("#link4").html(link4_text_english);
 		$("#link5").html(link5_text_english);
 		$("#link6").html(link6_text_english);
+		$("#link7").html(link7_text_english);
 		
 
 	}
@@ -170,29 +177,6 @@ jQuery(document).ready(function(){
 	//alert('Button clicked4.');
 
     });
-
-/*modal windows*/
-
-$(".beach_details_btn").click(function () {
-	//alert('beach_details_btn clicked_Agioi_Apostoloi.');
-	$("#beach_details_Agioi_Apostoloi").dialog({
-                    width: 800,
-                    height: 600,
-                    modal: true,
-                    resizable: true
-                });
-                return false;
-	});
-$(".beach_details_btn_Vai").click(function () {
-	//alert('beach_details_btn clicked_Agioi_Apostoloi.');
-	$("#beach_details_Vai").dialog({
-                    width: 800,
-                    height: 600,
-                    modal: true,
-                    resizable: true
-                });
-                return false;
-	});
 });
 
 </script>
@@ -204,7 +188,7 @@ $(".beach_details_btn_Vai").click(function () {
 <div class="container">  
 	<div class="row">
                 <div class="col-md-2 col-centered text-center logo-top">
-                <a href="index.html"><img src="images/logo_beaches.png" alt="Προβολή ελληνικών παραλιών"  width="80" height="80"/></a>
+                <a href="index.php"><img src="images/logo_beaches.png" alt="Προβολή ελληνικών παραλιών"  width="80" height="80"/></a>
                 </div>
         </div>  
 </div>
@@ -215,26 +199,70 @@ $(".beach_details_btn_Vai").click(function () {
 		 	<nav class="navbar navbar-inverse custom-nav">
 			  <div class="container-fluid">
 			    <!----><div class="navbar-header">
-			      <a class="navbar-brand" href="index.html" id="link1">Home</a>
+			      <a class="navbar-brand" href="index.php" id="link1">Home</a>
 			    </div>
 			    <div>
 			      <ul class="nav navbar-nav">
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
-				<li><a href="profile.html" id="link3">Profile</a></li>
-				<li><a href="gallery.html" id="link4">Gallery</a></li> 
-				<li><a href="services.html" id="link5">Services</a></li> 
-				<li><a href="contact.html" id="link6">Contact Us</a></li> 
+				<li><a href="profile.php" id="link3">Profile</a></li>
+				<li><a href="gallery.php" id="link4">Gallery</a></li> 
+				<li><a href="services.php" id="link5">Services</a></li> 
+				<li><a href="contact.php" id="link6">Contact Us</a></li> 
+ 				<?php
+					$role=$_SESSION["role"];
+					
+					if ($role!="guest"){
+					
+					echo "";
+					
+					}
+					else{
+					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
+					}
+
+					if ($role=="admin"){
+					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
+					
+					}
+					else{
+					echo "";
+					}
+				    ?>
+				
 			      </ul>
 			    </div>
-				<form class="navbar-form navbar-left custom-form">
+				<form class="navbar-form navbar-left custom-form" method="post" <?php
+					$role=$_SESSION["role"];
+					if ($role!="guest"){
+					echo "action=\"logout.php\"";
+					}
+					else{
+					echo "action=\"checklogin.php\"";
+					}
+
+					?>
+					>
 				    <div class="form-group">
-				      <input type="text" placeholder="E-mail" class="form-control" id="email">
+				      <input type="text" name="myusername" placeholder="E-mail" class="form-control" id="email">
 				    </div>
 				    <div class="form-group">
-				      <input type="password" placeholder="Password" class="form-control" id="password">
+				      <input type="password" name="mypassword" placeholder="Password" class="form-control" id="password">
 				    </div>
-				    <button type="submit" class="btn btn-default" id="login">Login</button>
-				    
+
+				    <?php
+					$role=$_SESSION["role"];
+
+					if ($role!="guest"){
+					//echo 'alert("message successfully sent")';
+					echo "<button type=\"submit\" class=\"btn btn-default\" id=\"logout\">Logout</button>";
+					//echo "<a class=\"btn btn-default\" id=\"logout\" role=\"button\">";
+					}
+					else{
+					echo "<button class=\"btn btn-default\" id=\"login\">Login</button>";
+					//<a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">
+					}
+
+				    ?>
 				    <!--<input type="text" id="myInput" value="EN"> btn btn-info -->
 				  </form>	
 				<button class="btn navbar-btn my-btn" id="LangSelector">GR</button>
@@ -290,135 +318,46 @@ $(".beach_details_btn_Vai").click(function () {
 	</div> <!--end of row-->    
 </div>   <!--end of container-->   
 <!--main area-->
-<!-- 1i tetrada----------------------------------------------------------------------------------------------->
-<div class="container">
-           <div class="row">
-                <div class="col-md-12 col-centered text-center">
-                    <h3>Our beaches</h3>
-                </div>
-            </div>  
+<?php
+$role=$_SESSION["role"];
+echo "Welcome, ".$role." ".$_SESSION["myusername"];
+//session_write_close (); 
+?>
+     <div class="container">
+  
+            <div class="row">
+	       <div class="col-sm-3">
+	       </div>
+  		<div class="col-sm-6">
+			<div class="blog">
+			    <section class="post">
+				<h2 class="post-title" id="introtitle">Success!</h2>
+				<p class="post-excerpt" id="introtext">Image uploaded to our server!! </p>
+				<!--
+				<div data-translate="hello">Hello there, how are you?</div>
+				<div id="msgid1">Hello there, how are you?</div>
+				<div id="msgid2">Hello there, how are you?</div>-->
+			    </section>
+			</div>
+	       </div>
+	       <div class="col-sm-3">
+	       </div>
+	       <!--
+	       <div class="col-sm-8">
+			<div class="blog">
+			    <section class="post">
+				<h2 class="post-title">Blog Post Title</h2>
+				<p class="post-excerpt">Ice cream tart powder jelly-o. 
+				Gummies chocolate cake ice cream cookie halvah tiramisu jelly-o.</p>
+			    </section>
+			</div>
 
-           <div class="row">
-                <div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Agioi Apostoloi</h3>
-				<img class="beach-img" src="images/beaches/Agioi-Apostoloi.jpg" alt="Agioi-Apostoloi"><!---->
-				<p class="beach-description">Agioi Apostoloi </p>
-				<div class="beach-details">
-				 <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				 </div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Bali</h3>
-				<img class="beach-img" src="images/beaches/Bali.jpg" alt="Bali"><!---->
-				<p class="beach-description">Bali </p>
-				<div class="beach-details">
-				 <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Ferma Ierapetras</h3>
-				<img class="beach-img" src="images/beaches/Ferma_Ierapetras.jpg" alt="Ferma_Ierapetras"><!---->
-				<p class="beach-description">Ferma Ierapetras </p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Falasarna</h3>
-				<img class="beach-img" src="images/beaches/Falasarna.jpg" alt="Falasarna"><!---->
-				<p class="beach-description">Falasarna</p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-            </div><!--end of row with beaches-->
-</div> <!--end of container-->
+	       </div>-->
+	    </div>
+  
+    </div>
 
-<!-- 2i tetrada----------------------------------------------------------------------------------------------->
-
-<div class="container">
-
-           <div class="row">
-                <div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Hersonissos</h3>
-				<img class="beach-img" src="images/beaches/Hersonissos.jpg" alt="Hersonissos"><!---->
-				<p class="beach-description">Hersonissos </p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Makri Gialos</h3>
-				<img class="beach-img" src="images/beaches/Makri-Gialos.jpg" alt="Makri-Gialos"><!---->
-				<p class="beach-description">Makri Gialos </p>
-				<div class="beach-details">
-				<a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Marathi</h3>
-				<img class="beach-img" src="images/beaches/Marathi.jpg" alt="Marathi"><!---->
-				<p class="beach-description">Marathi </p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Matala</h3>
-				<img class="beach-img" src="images/beaches/Matala.jpg" alt="Matala"><!---->
-				<p class="beach-description">Matala </p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-            </div><!--end of row with beaches-->
-</div> <!--end of container-->
-
-<!-- 3i tetrada----------------------------------------------------------------------------------------------->
-
-<div class="container">
-
-           <div class="row">
-                <div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Plakias</h3>
-				<img class="beach-img" src="images/beaches/Plakias.jpg" alt="Plakias"><!---->
-				<p class="beach-description">Plakias </p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-		<div class="col-md-3 beach-items-container">
-                     <div class="beach-item">
-			<h3>Vai</h3>
-				<img class="beach-img" src="images/beaches/Vai.jpg" alt="Vai"><!---->
-				<p class="beach-description">Vai </p>
-				<div class="beach-details">
-				  <a class="btn btn-default beach_details_btn_Vai" href="beach-details.html" role="button">Information &raquo;</a>
-				</div> <!--end of beach details-->
-		     </div><!--end of beach item-->
-                </div><!--end of col-md-3 beach-items-container-->
-           </div><!--end of row with beaches-->
-</div> <!--end of container-->
-<!-- telos fwtografiwn----------------------------------------------------------------------------------------------->
-<div class="container">
+     <div class="container">
   
             <div class="row footer">
                 <div class="col-xs-4">
@@ -457,32 +396,5 @@ $(".beach_details_btn_Vai").click(function () {
     </div>        
 </div> <!--end of big_wrapper-->     
         
-<!-- Hidden modal forms Agioi_Apostoloi -->
-    
-     <div id="beach_details_Agioi_Apostoloi" title="Beach Details Agioi Apostoloi" style="display:none;">
-        <div class="container beach_details_modal" title="Beach Details Agioi Apostoloi">
-           <div class="row">
-                <div class="col-md-12 col-centered text-center">
-                    <h1>Beach Information Agioi Apostoloi</h1>
-                </div>
-            </div>  
-           
-            <div class="row">
-             <div class="col-md-12 tours-items-container">
-                 <div style="background-color: #ccc; overflow: hidden;">
-                 <h3>Agioi Apostoloi</h3>
-                 <img src="images/beaches/Agioi-Apostoloi.jpg" alt="Agioi-Apostoloi" style="width:100%;">
-                 <p style="text-align: justify; font-size:14px;">text </p>
-                 <div style="background-color: #91e5b6;">
-                  main info
-                 </div>
-               </div>
-             </div>
-
-           </div>    
-       </div>
-     </div><!--end of hidden modal window agioi apostoloi-->
-
-
     </body>
 </html>
