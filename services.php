@@ -188,7 +188,7 @@ jQuery(document).ready(function(){
          alert("Geolocation is not supported by this browser."); 
     }    /**/
     });
-});
+}); //end of jquery
 
 function showPosition(position) {
     lat = position.coords.latitude;
@@ -211,6 +211,17 @@ function showPosition(position) {
     
     var map = new google.maps.Map(document.getElementById("mapholder1"), myOptions);
     var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+    
+   
+    //call php script to locate nearest beach with ajax
+	 $.ajax({
+      url: "my_services.php?user_latitude="+lat+"&user_longitude="+lon
+    }).done(function(data) {
+      console.log(data);
+      document.getElementById("nearest_output").innerHTML=data;
+    });
+ 
+      
 }
 function showError(error) {
     switch(error.code) {
@@ -235,7 +246,8 @@ function showError(error) {
 
 </head>
 <body>
-<?php include 'my_services.php';?> <!--include external php script for setting modal windows-->
+<!--<?php include 'my_services.php';?>--> <!--include external php script for setting modal windows-->
+
 <div class="big_wrapper">   
 <div class="container">  
 	<div class="row">
@@ -400,15 +412,16 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
    						<label for="user_longitude">User longitude</label>
     						<input type="text" class="form-control" id="user_longitude" name="user_longitude">
   						</div>
-  						<button type="submit" name="submit" class="btn btn-default">Get nearest beach</button>
+  						<button type="submit" name="submit" class="btn btn-default" style="display:none;">Get nearest beach</button>
 					</form>
-					<?php 
+					<!--<?php 
 						if(isset($_POST['submit'])) { 
  					 // do search stuff here 
  					 my_user_services();
 					} 
-					?>
+					?>-->
 					<!---->
+					 Nearest beach is:<div id="nearest_output"> </div>
 				</p>
 				<p class="post-excerpt" id="choose_beach">Select beaches from category </p>
 				<p class="post-excerpt" id="suggest">Suggest </p>

@@ -1,5 +1,27 @@
 <?php
+
+my_user_services();
 //header("Content-type: image/jpeg");
+
+/*
+if( !isset($_POST['functionname']) ) { echo 'No function name!'; }
+
+//if( !isset($aResult['error']) ) {
+
+switch($_POST['functionname']) {
+            case 'my_user_services':
+               my_user_services();
+               //$aResult['result'] = add(floatval($_POST['arguments'][0]), floatval($_POST['arguments'][1]));
+               break;
+
+            default:
+               //$aResult['error'] = 'Not found function '.$_POST['functionname'].'!';
+               echo "This is default msg";
+               break;
+}
+*/
+//    }
+
 function my_user_services(){
 //echo "Hello from print_images!!!"."<br>";
 //session_start();
@@ -11,8 +33,8 @@ $db_name="user738_db2"; // Database name
 $tbl_name_image="images"; // Table name
 
 
-$latit=$_POST['user_latitude']; 
-$longit=$_POST['user_longitude']; 
+$latit=$_GET['user_latitude']; 
+$longit=$_GET['user_longitude']; 
 //echo "Hey!!!!!!".$latit." ".$longit."<br>";
 
 
@@ -59,8 +81,11 @@ foreach ($nums as $each_member) {
     //echo "<h2>Distance $i</h2>"; 
     while (list($key, $value) = each ($each_member)) { 
                                         
-        //echo "$key: $value<br />"; 
-        $dists[]=(double)$value;
+        //echo "key: ".$key." value: ".$value."<br />"; 
+        if($key==1) {
+        	$dists[]=$value;
+        }
+        
     } 
 
 } 
@@ -92,7 +117,10 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) { 
-echo " Nearest beach to user is:".$row["name"]."<br>";	
+//print name of nearest beach and distance
+//echo " Nearest beach to user is:".$row["name"]."<br>";	
+echo substr($row["name"],0,$row["name"]-4)." with distance: ".$minimum ." km <br>";	
+
 }
 
 
@@ -109,26 +137,27 @@ echo "No images are found"."<br>";
 //echo "asdasdasdsad"."<br>";
 }//end of function
 
-function harvesine($id,$lat_im,$lon_im,$lat_user,$lon_user){
+function harvesine($id,$latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo){
 //$randnums = array(); 
 //$num1=rand(0, 100);
 //$num2=rand(0, 100);
 //echo "Hello from harvesine. num1=".$num1."<br>";
 //or($count=0;$count<9;$count++) {
-//$dist=$lat_im+$lon_im;	
+//$dist=$lat_im-$lon_im;	
+/**/
 /**/
   $earthRadius = 6371000;
 // convert from degrees to radians
-  $latFrom = deg2rad($lat_im);
-  $lonFrom = deg2rad($lon_im);
-  $latTo = deg2rad($lat_user);
-  $lonTo = deg2rad($lon_user);
+  // convert from degrees to radians
+  $latFrom = deg2rad(floatval($latitudeFrom));
+  $lonFrom = deg2rad(floatval($longitudeFrom));
+  $latTo = deg2rad(floatval($latitudeTo));
+  $lonTo = deg2rad(floatval($longitudeTo));
 
   $latDelta = $latTo - $latFrom;
   $lonDelta = $lonTo - $lonFrom;
 
-  $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
-  cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+  $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) + cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
   $dist=$angle * $earthRadius;
 
 $result =array($id,$dist/1000);
