@@ -102,6 +102,8 @@ jQuery(document).ready(function(){
 		var link4_text_greek="Φωτογραφίες";
 		var link5_text_greek="Υπηρεσίες";
 		var link6_text_greek="Επικοινωνία";
+		var link7_text_greek="Εγγραφή";
+		var link8_text_greek="Διαχείριση";
 
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
@@ -118,6 +120,8 @@ jQuery(document).ready(function(){
 		$("#link4").html(link4_text_greek);
 		$("#link5").html(link5_text_greek);
 		$("#link6").html(link6_text_greek);
+		$("#link7").html(link7_text_greek);
+		$("#link8").html(link8_text_greek);
 		
 	}
 
@@ -150,6 +154,8 @@ jQuery(document).ready(function(){
 		var link4_text_english="Gallery";
 		var link5_text_english="Services";
 		var link6_text_english="Contact Us";
+		var link7_text_english="Register";
+		var link8_text_english="Admin area";
 
 
 		$("#title").html(title_english);
@@ -166,6 +172,8 @@ jQuery(document).ready(function(){
 		$("#link4").html(link4_text_english);
 		$("#link5").html(link5_text_english);
 		$("#link6").html(link6_text_english);
+		$("#link7").html(link7_text_english);
+		$("#link8").html(link8_text_english);
 		
 
 	}
