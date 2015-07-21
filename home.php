@@ -203,7 +203,7 @@ jQuery(document).ready(function(){
 <!--menu-->
 <div class="container">
 	<div class="row">
-                <div class="col-xs-12">
+        <div class="col-xs-12">
 		 	<nav class="navbar navbar-inverse custom-nav">
 			  <div class="container-fluid">
 			    <!----><div class="navbar-header">
@@ -286,7 +286,7 @@ jQuery(document).ready(function(){
 
 <div class="container">
 	<div class="row">
-                <div class="col-xs-12">
+         <div class="col-xs-12">
 	   		<div id="myCarousel" class="carousel slide " data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators">

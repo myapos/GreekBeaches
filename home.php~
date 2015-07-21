@@ -286,7 +286,7 @@ jQuery(document).ready(function(){
 
 <div class="container">
 	<div class="row">
-                <div class="col-xs-12">
+         <div class="col-xs-12">
 	   		<div id="myCarousel" class="carousel slide " data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators">
@@ -381,20 +381,17 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 							<li class="active">
 								<a href="https://ellak.gr/" target="_blank">
 									<img class="img-responsive center-block" src="images/logos/logoEllak.png" alt="Bootstrap"></a>
-
 							</li>
 							<li class="active">
 								<a href="https://ma.ellak.gr/" target="_blank">
 									<img class="img-responsive center-block" src="images/logos/logoMonadesAristeias.png" alt="Bootstrap">
 								</a>
 							</li>
-
 							<li class="active">
 								<a href="http://www.uoc.gr/" target="_blank">
 									<img class="img-responsive center-block" src="images/logos/logoPK.png" alt="Bootstrap">
 								</a>
 							</li>
-
   							<li class="rrssb-facebook">
     							<a href="https://www.facebook.com/sharer/sharer.php?u=http://ellaksrv.datacenter.uoc.gr/~user738/greekbeaches/home.php" class="popup">
       						<span class="rrssb-icon">
