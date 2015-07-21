@@ -279,7 +279,7 @@ var checkElem = document.getElementById("orderByRating");
 var mySelection = selectElem.options[selectElem.selectedIndex].value;
 var checked =checkElem.checked;
  
-alert("You have selected " + mySelection + ". Order by rating:"+checked);
+//alert("You have selected " + mySelection + ". Order by rating:"+checked);
 
 
 
