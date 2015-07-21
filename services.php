@@ -180,20 +180,16 @@ jQuery(document).ready(function(){
     //alert("Hey!!");
 	  callSuggestScript();
 
-
-
-
-
-
     });
     
 //select beach
 
-  
-  $("#select_beach_btn ").click(function () {
-    alert("Hey!!");
-		
-    }); 
+  $("#select_beach_btn").click(function () {
+    //alert("Hey!!");
+	  callSelectBeachScript();
+
+    });
+
 //geolocation    
    
 
@@ -268,6 +264,31 @@ $.ajax({
     }).done(function(data) {
       console.log(data);
       document.getElementById("suggest_output").innerHTML=data;
+    });
+
+
+}
+
+function callSelectBeachScript(){
+
+
+//var formElem = document.getElementById("category_beach");
+
+var selectElem = document.getElementById("categoryBeach");
+var checkElem = document.getElementById("orderByRating");
+var mySelection = selectElem.options[selectElem.selectedIndex].value;
+var checked =checkElem.checked;
+ 
+//alert("You have selected " + mySelection + ". Order by rating:"+checked);
+
+
+
+$.ajax({
+      url: "my_services.php?func=selectBeach&mySelection="+mySelection+"&checked="+checked
+    }).done(function(data) {
+      console.log(data);
+      document.getElementById("selectBeachoutput").innerHTML=data;
+      //get value from select element in form
     });
 
 
@@ -454,11 +475,13 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 					?>-->
 					<!---->
 					 Nearest beach is:<div id="nearest_output"> </div>
+					 Beach of selected category is:<div id="selectBeachoutput"> </div>
+					 
 				</p>
 				<p class="post-excerpt" id="choose_beach">Select beaches from category 
 				
 					<form role="form" method="post" id="select_beach_form">
-  						<select id="category_beach" name="category_beach">
+  						<select id="categoryBeach" name="categoryBeach">
    					 <option value="" disabled="disabled" selected="selected">Please select category</option>
     					 <option value="Swimming">Swimming</option>
     					 <option value="Sea sports">Sea sport</option>
@@ -466,6 +489,7 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
     					 <option value="Sand">Sand</option>
     					 <option value="Rock Beach">Rock Beach</option>		
 						</select>
+						<input type="checkbox" id="orderByRating" name="orderByRating"> Order By Rating<br>
   						<a class="btn btn-default" id="select_beach_btn" role="button"> Select</a><br>		
   				</form>
 				

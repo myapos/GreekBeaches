@@ -12,26 +12,11 @@ suggest();
 	
 }
 
-//header("Content-type: image/jpeg");
-
-/*
-if( !isset($_POST['functionname']) ) { echo 'No function name!'; }
-
-//if( !isset($aResult['error']) ) {
-
-switch($_POST['functionname']) {
-            case 'my_user_services':
-               my_user_services();
-               //$aResult['result'] = add(floatval($_POST['arguments'][0]), floatval($_POST['arguments'][1]));
-               break;
-
-            default:
-               //$aResult['error'] = 'Not found function '.$_POST['functionname'].'!';
-               echo "This is default msg";
-               break;
+elseif($func=="selectBeach") {
+selectBeach();	
+	
 }
-*/
-//    }
+
 
 function nearest(){
 $host="localhost"; // Host name 
@@ -199,6 +184,8 @@ if ($conn->connect_error) {
 } 
 else{
 //echo "Preparing to execute sql query!!!"."<br>";
+
+
 $sql="SELECT * FROM ".$tbl_name_image;
 
 $result = $conn->query($sql); //execute query
@@ -240,4 +227,87 @@ echo "No images are found"."<br>";
 }
 }
 }
+
+function selectBeach(){
+$host="localhost"; // Host name 
+$username="user738"; // Mysql username 
+$password="eYq9haWO"; // Mysql password 
+$db_name="user738_db2"; // Database name 
+$tbl_name_image="images"; // Table name
+
+$mySelection=$_GET['mySelection']; 	
+$checked=$_GET['checked'];
+
+//echo "Hello from suggest <br>";
+
+if($checked=="false"){
+// Create connection
+$conn = new mysqli($host, $username, $password, $db_name);
+// Check connection
+if ($conn->connect_error) {
+    echo "Connection failed!!!"."<br>";
+    die("Connection failed: " . $conn->connect_error);
+} 
+else{
+//echo "Preparing to execute sql query!!!"."<br>";
+echo "My Selection is ".$mySelection." checked:".$checked."<br>";
+
+//get all beaches from db who belong to this category 
+
+$sql="SELECT * FROM ".$tbl_name_image." WHERE category='".$mySelection."'";
+
+$result = $conn->query($sql); //execute query
+
+
+if ($result->num_rows > 0) {
+
+//step 1. for each image get coordinates
+while($row = $result->fetch_assoc()) {
+  
+echo "beaches in this category:". substr($row["name"],0,$row["name"]-4)."<br> ";
+
+}
+ 
+}
+
+else{ echo "No images";}
+}
+}//end of if checked is false
+else{
+//echo "Checked is true";
+// Create connection
+$conn = new mysqli($host, $username, $password, $db_name);
+// Check connection
+if ($conn->connect_error) {
+    echo "Connection failed!!!"."<br>";
+    die("Connection failed: " . $conn->connect_error);
+} 
+else{
+//echo "Preparing to execute sql query!!!"."<br>";
+//echo "My Selection is ".$mySelection." checked:".$checked."<br>";
+
+//get all beaches from db who belong to this category order by rating
+
+//$sql="SELECT * FROM ".$tbl_name_image." WHERE category='".$mySelection."'";
+$sql="SELECT * FROM ".$tbl_name_image." WHERE category='".$mySelection."' ORDER BY rating";
+
+$result = $conn->query($sql); //execute query
+
+//echo results
+if ($result->num_rows > 0) {
+
+//step 1. for each image get coordinates
+while($row = $result->fetch_assoc()) {
+  
+//echo "beaches in this category:". substr($row["name"],0,$row["name"]-4)." rating: ".$row["rating"]."<br> ";
+echo " ".substr($row["name"],0,$row["name"]-4)." with rating: ".$row["rating"]."<br>";
+}
+}
+
+}
+
+}
+
+}
+
 ?>
