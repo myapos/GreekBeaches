@@ -236,7 +236,11 @@ jQuery(document).ready(function(){
 	</div> <!--end of row-->    
 </div>   <!--end of container-->   
 <!--main area-->
-
+<?php
+$role=$_SESSION["role"];
+echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"];
+//session_write_close (); 
+?>
      <div class="container">
   
             <div class="row">

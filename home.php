@@ -107,7 +107,9 @@ jQuery(document).ready(function(){
 		var link6_text_greek="Επικοινωνία";
 		var link7_text_greek="Εγγραφή";
 		var link8_text_greek="Διαχείριση";
-
+		var welcome_text_greek="Καλωσήρθατε, ";
+		
+		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -125,6 +127,8 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_greek);
 		$("#link7").html(link7_text_greek);
 		$("#link8").html(link8_text_greek);
+		
+		$("#welcomemsg").html(welcome_text_greek);
 		
 	}
 
@@ -159,7 +163,8 @@ jQuery(document).ready(function(){
 		var link6_text_english="Contact Us";
 		var link7_text_english="Register";
 		var link8_text_english="Admin area";
-
+		
+		var welcome_text_english="Welcome, ";
 
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
@@ -177,6 +182,7 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_english);
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
+		$("#welcomemsg").html(welcome_text_english);
 		
 
 	}
@@ -328,7 +334,7 @@ jQuery(document).ready(function(){
 <!--main area-->
 <?php
 $role=$_SESSION["role"];
-echo "Welcome, ".$role." ".$_SESSION["myusername"];
+echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"];
 //session_write_close (); 
 ?>
      <div class="container">

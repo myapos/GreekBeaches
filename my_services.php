@@ -118,8 +118,8 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) { 
 //print name of nearest beach and distance
 //echo " Nearest beach to user is:".$row["name"]."<br>";	
-echo substr($row["name"],0,$row["name"]-4)." with distance: ".$minimum ." km <br>";	
-
+echo substr($row["name"],0,$row["name"]-4)." with distance: ".$minimum ." km <br>;";	
+echo "latitude:".$row["latitude"]."; longitude:".$row["longitude"];
 }
 
 
@@ -213,8 +213,8 @@ if ($result->num_rows > 0) {
 while($row = $result->fetch_assoc()) { 
 //print name of nearest beach and distance
 //echo " Nearest beach to user is:".$row["name"]."<br>";	
-echo substr($row["name"],0,$row["name"]-4)." ";
-
+echo substr($row["name"],0,$row["name"]-4)." ;";
+echo "latitude:".$row["latitude"]."; longitude:".$row["longitude"];
 }
 
 

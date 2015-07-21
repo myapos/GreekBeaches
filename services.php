@@ -104,7 +104,9 @@ jQuery(document).ready(function(){
 		var link6_text_greek="Επικοινωνία";
 		var link7_text_greek="Εγγραφή";
 		var link8_text_greek="Διαχείριση";
-
+		
+		var welcome_text_greek="Καλωσήρθατε, ";
+		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -123,6 +125,7 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_greek);
 		$("#link8").html(link8_text_greek);
 		
+		$("#welcomemsg").html(welcome_text_greek);		
 	}
 
 	else if (lan=="EN"){
@@ -156,6 +159,8 @@ jQuery(document).ready(function(){
 		var link6_text_english="Contact Us";
 		var link7_text_english="Register";
 		var link8_text_english="Admin area";
+		
+		var welcome_text_english="Welcome, ";
 
 
 		$("#title").html(title_english);
@@ -175,6 +180,7 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
 		
+		$("#welcomemsg").html(welcome_text_english);			
 
 	}
 	
@@ -224,7 +230,7 @@ function showPosition(position) {
     latlon = new google.maps.LatLng(lat, lon)
     mapholder = document.getElementById('mapholder1')
     mapholder.style.height = '250px';
-    mapholder.style.width = '500px';
+    //mapholder.style.width = '500px';
 
     var myOptions = {
     center:latlon,zoom:14,
@@ -242,8 +248,34 @@ function showPosition(position) {
       url: "my_services.php?func=nearest&user_latitude="+lat+"&user_longitude="+lon
     }).done(function(data) {
       console.log(data);
-      document.getElementById("nearest_output").innerHTML=data;
-    });
+      var splitteddata1 = data.split(";");
+      var splitteddata2 = splitteddata1[1].split(":");
+      var splitteddata3 = splitteddata1[2].split(":");
+      var lat2 = splitteddata2[1];
+      var lon2 = splitteddata3[1];
+      //var splitteddata3 = splitteddata1[1].split(":");
+      //var splitteddata3 = splitteddata1[1].split(":");
+      //var lat = splitteddata2[0];
+      //var lon = splitteddata2[1];/**/
+      document.getElementById("nearest_output").innerHTML=splitteddata1[0];
+      //document.getElementById("nearest_output").innerHTML=splitteddata1[0]+" dsfdf"+splitteddata1[1]
+      //+" dsfdf "+splitteddata1[2];/*lat+"ddddd "+lon;*/
+      
+       latlon2 = new google.maps.LatLng(lat2, lon2)
+    	 mapholder = document.getElementById('mapholder2')
+       mapholder.style.height = '250px';
+       //mapholder.style.width = '500px';
+
+       var myOptions = {
+       center:latlon2,zoom:14,
+       mapTypeId:google.maps.MapTypeId.ROADMAP,
+       mapTypeControl:false,
+       navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+       }
+    
+       var map = new google.maps.Map(document.getElementById("mapholder2"), myOptions);
+       var marker = new google.maps.Marker({position:latlon2,map:map,title:"You are here!"});
+       });
  
       
 }
@@ -271,7 +303,28 @@ $.ajax({
       url: "my_services.php?func=suggest"
     }).done(function(data) {
       console.log(data);
-      document.getElementById("suggest_output").innerHTML=data;
+      var splitteddata1 = data.split(";");
+      var splitteddata2 = splitteddata1[1].split(":");
+      var splitteddata3 = splitteddata1[2].split(":");
+      var lat3 = splitteddata2[1];
+      var lon3 = splitteddata3[1];
+      
+       latlon3 = new google.maps.LatLng(lat3, lon3)
+    	 mapholder = document.getElementById('mapholder3')
+       mapholder.style.height = '250px';
+       //mapholder.style.width = '500px';
+
+       var myOptions = {
+       center:latlon3,zoom:14,
+       mapTypeId:google.maps.MapTypeId.ROADMAP,
+       mapTypeControl:false,
+       navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+       }
+       document.getElementById("suggest_output").innerHTML=splitteddata1[0];
+        
+       var map = new google.maps.Map(document.getElementById("mapholder3"), myOptions);
+       var marker = new google.maps.Marker({position:latlon2,map:map,title:"You are here!"});
+     
     });
 
 
@@ -444,7 +497,7 @@ $.ajax({
 <!--main area-->
 <?php
 $role=$_SESSION["role"];
-echo "Welcome, ".$role." ".$_SESSION["myusername"];
+echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"];
 //session_write_close (); 
 ?>
 <div class="container">
@@ -483,6 +536,7 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 					?>-->
 					<!---->
 					 Nearest beach is:<div id="nearest_output"> </div>
+					 <div id="mapholder2"></div>
 					 Beach of selected category is:<div id="selectBeachoutput"> </div>
 					 
 				</p>
@@ -505,6 +559,7 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 				<p class="post-excerpt" id="suggest">Press button to suggest a beach.
 					<a class="btn btn-default" id="suggest_btn" role="button"> Suggest</a><br>
 					Today's beach suggestion is:<div id="suggest_output"> </div> 
+					<div id="mapholder3"></div>
 				</p>
 				<!--
 				<div data-translate="hello">Hello there, how are you?</div>

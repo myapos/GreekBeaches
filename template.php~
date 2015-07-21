@@ -110,11 +110,11 @@ jQuery(document).ready(function(){
 <!--menu-->
 <div class="container">
 	<div class="row">
-                <div class="col-xs-12">
+        <div class="col-xs-12">
 		 	<nav class="navbar navbar-inverse custom-nav">
 			  <div class="container-fluid">
 			    <!----><div class="navbar-header">
-			      <a class="navbar-brand" href="index.html" id="link1">Home</a>
+			      <a class="navbar-brand" href="index.php" id="link1">Home</a>
 			    </div>
 			    <div>
 			      <ul class="nav navbar-nav">
