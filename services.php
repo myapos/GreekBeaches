@@ -174,10 +174,30 @@ jQuery(document).ready(function(){
 	//alert('Button clicked4.');
 
     });
+    
+//suggest
+    $("#suggest_btn").click(function () {
+    //alert("Hey!!");
+	  callSuggestScript();
+
+
+
+
+
+
+    });
+    
+//select beach
+
+  
+  $("#select_beach_btn ").click(function () {
+    alert("Hey!!");
+		
+    }); 
 //geolocation    
    
 
-    $(geoloc_btn).click(function () {
+    $("#geoloc_btn").click(function () {
     //alert("Hey!!");
 
     if (navigator.geolocation) {
@@ -215,7 +235,7 @@ function showPosition(position) {
    
     //call php script to locate nearest beach with ajax
 	 $.ajax({
-      url: "my_services.php?user_latitude="+lat+"&user_longitude="+lon
+      url: "my_services.php?func=nearest&user_latitude="+lat+"&user_longitude="+lon
     }).done(function(data) {
       console.log(data);
       document.getElementById("nearest_output").innerHTML=data;
@@ -240,6 +260,18 @@ function showError(error) {
     }
 }
 
+function callSuggestScript(){
+//alert("Hey2"); 
+/**/
+$.ajax({
+      url: "my_services.php?func=suggest"
+    }).done(function(data) {
+      console.log(data);
+      document.getElementById("suggest_output").innerHTML=data;
+    });
+
+
+}
 
 </script>
 
@@ -386,9 +418,9 @@ $role=$_SESSION["role"];
 echo "Welcome, ".$role." ".$_SESSION["myusername"];
 //session_write_close (); 
 ?>
-     <div class="container">
+<div class="container">
   
-            <div class="row">
+  <div class="row">
 	       <div class="col-sm-3">
 	       </div>
   		<div class="col-sm-6">
@@ -403,7 +435,7 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 					<div id="lbl_user_longitude">User longitude:<div id="user_longitude"></div>	</div>		-->	
 					<div id="mapholder1"></div>
 					
-					<form role="form" method="post">
+					<form role="form" method="post" id="nearest_beach_form">
   						<div class="form-group">
   						  <label for="user_latitude">User latitude:</label>
   						  <input type="text" class="form-control" id="user_latitude" name="user_latitude">
@@ -423,8 +455,25 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 					<!---->
 					 Nearest beach is:<div id="nearest_output"> </div>
 				</p>
-				<p class="post-excerpt" id="choose_beach">Select beaches from category </p>
-				<p class="post-excerpt" id="suggest">Suggest </p>
+				<p class="post-excerpt" id="choose_beach">Select beaches from category 
+				
+					<form role="form" method="post" id="select_beach_form">
+  						<select id="category_beach" name="category_beach">
+   					 <option value="" disabled="disabled" selected="selected">Please select category</option>
+    					 <option value="Swimming">Swimming</option>
+    					 <option value="Sea sports">Sea sport</option>
+    					 <option value="Fishing">Fishing</option>
+    					 <option value="Sand">Sand</option>
+    					 <option value="Rock Beach">Rock Beach</option>		
+						</select>
+  						<a class="btn btn-default" id="select_beach_btn" role="button"> Select</a><br>		
+  				</form>
+				
+				</p>
+				<p class="post-excerpt" id="suggest">Press button to suggest a beach.
+					<a class="btn btn-default" id="suggest_btn" role="button"> Suggest</a><br>
+					Today's beach suggestion is:<div id="suggest_output"> </div> 
+				</p>
 				<!--
 				<div data-translate="hello">Hello there, how are you?</div>
 				<div id="msgid1">Hello there, how are you?</div>

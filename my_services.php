@@ -1,6 +1,17 @@
 <?php
 
-my_user_services();
+$func=$_GET['func']; 
+
+if($func=="nearest") {
+nearest();
+
+}
+
+elseif($func=="suggest") {
+suggest();	
+	
+}
+
 //header("Content-type: image/jpeg");
 
 /*
@@ -22,15 +33,18 @@ switch($_POST['functionname']) {
 */
 //    }
 
-function my_user_services(){
-//echo "Hello from print_images!!!"."<br>";
-//session_start();
-//$host="ellaksrv.datacenter.uoc.gr"; // Host name 
+function nearest(){
 $host="localhost"; // Host name 
 $username="user738"; // Mysql username 
 $password="eYq9haWO"; // Mysql password 
 $db_name="user738_db2"; // Database name 
 $tbl_name_image="images"; // Table name
+
+
+//echo "Hello from print_images!!!"."<br>";
+//session_start();
+//$host="ellaksrv.datacenter.uoc.gr"; // Host name 
+
 
 
 $latit=$_GET['user_latitude']; 
@@ -166,4 +180,64 @@ $result =array($id,$dist/1000);
 return $result;
 }
 
+
+function suggest(){
+$host="localhost"; // Host name 
+$username="user738"; // Mysql username 
+$password="eYq9haWO"; // Mysql password 
+$db_name="user738_db2"; // Database name 
+$tbl_name_image="images"; // Table name
+
+	
+//echo "Hello from suggest <br>";
+// Create connection
+$conn = new mysqli($host, $username, $password, $db_name);
+// Check connection
+if ($conn->connect_error) {
+    echo "Connection failed!!!"."<br>";
+    die("Connection failed: " . $conn->connect_error);
+} 
+else{
+//echo "Preparing to execute sql query!!!"."<br>";
+$sql="SELECT * FROM ".$tbl_name_image;
+
+$result = $conn->query($sql); //execute query
+if ($result->num_rows > 0) {
+//echo "Found images:".$result->num_rows."<br>";
+
+$ids = array();
+
+//step 1. for each image get coordinates
+while($row = $result->fetch_assoc()) {
+  
+$ids[]=$row["id"];
+
+}
+//var_dump($ids);
+//pick one value randomly
+
+$suggestionis=$ids[array_rand($ids)];
+
+//echo "suggestionis: ".$suggestionis." ";
+
+$sql="SELECT * FROM ".$tbl_name_image." WHERE id='".$suggestionis."'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) { 
+//print name of nearest beach and distance
+//echo " Nearest beach to user is:".$row["name"]."<br>";	
+echo substr($row["name"],0,$row["name"]-4)." ";
+
+}
+
+
+}
+else {echo " No images are found"."<br>"; }
+
+}
+else{
+echo "No images are found"."<br>";
+}
+}
+}
 ?>
