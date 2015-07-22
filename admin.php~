@@ -1,9 +1,6 @@
 <?php
 session_start();
-$role=$_SESSION["role"];
-if($role="admin") {
-echo "asdcascacsc";	
-echo<<<EOL
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,14 +78,10 @@ jQuery(document).ready(function(){
 		$("#LangSelector").html(lan);
 
 		var title_greek="Ελληνικές παραλίες";
-		var intro_title_greek="Καλωσήρθατε!";
+		var intro_title_greek="Πίνακας ελέγχου!";
 
 
-		var intro_text_greek="Καλωσήρθατε στον διαδικτυακό μας τόπο. Στην παρούσα ιστοσελίδα μπορείτε να βρείτε χρήσιμες πληροφορίες"
-						+" για τις ελληνικές παραλίες. Η Ελλάδα είναι διάσημη για τον υπέροχο συνδυασμό ήλιου"
-						+" και θάλασσας. Ακόμα μπορείτε να μάθετε ιστορικές πληροφορίες για κάθε παραλία, τρόπο"
-						+" πρόσβασης και χρήσιμα κοντινά σημεία ενδιαφέροντος. Ελπίζουμε να βρείτε το υλικό μας"
-						+" ενδιαφέρον. Καλή πλοήγηση.";
+		var intro_text_greek="Παρακαλώ επιλέξτε αρχείο εικόνας για μεταφόρτωση";
 
 		var footerdevelopment_text_greek="Κατασκευή ιστοσελίδας <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Αποστολάκης "
 						+" Μύρων</a>";
@@ -106,9 +99,14 @@ jQuery(document).ready(function(){
 		var link6_text_greek="Επικοινωνία";
 		var link7_text_greek="Εγγραφή";
 		var link8_text_greek="Διαχείριση";
+		var select_img_txt_greek="Επιλέξτε εικόνα για μεταφόρτωση:";		
+		var lat_txt_greek="γεωγραφικό πλάτος:";	
+		var longit_txt_greek="γεωγραφικό μήκος:";
+		var desc_txt_greek="Περιγραφή:";	
+		var rating_txt_greek="Αξιολόγηση:";
+		var category_txt_greek="Κατηγορία:";
+		var submit_txt_greek="Υποβολή";		
 		
-		var welcome_text_greek="Καλωσήρθατε, ";
-
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -126,8 +124,14 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_greek);
 		$("#link7").html(link7_text_greek);
 		$("#link8").html(link8_text_greek);
-		
-		$("#welcomemsg").html(welcome_text_greek);
+		/**/	
+		$("#select_img_txt").html(select_img_txt_greek);
+		$("#lat_txt").html(lat_txt_greek);
+		$("#longit_txt").html(longit_txt_greek);
+		$("#desc_txt").html(desc_txt_greek);
+		$("#rating_txt").html(rating_txt_greek);
+		$("#category_txt").html(category_txt_greek);
+		$("#upload_img").html(submit_txt_greek);
 		
 	}
 
@@ -138,13 +142,8 @@ jQuery(document).ready(function(){
 		//$("#myInput").val(lan);
 		$("#LangSelector").html(lan);
 		var title_english="Greek Beaches";
-		var intro_title_english="Welcome!";
-		var intro_text_english="Welcome to our web site. Here you can find useful information"
-						+"for the best greek beaches. Greece is famous for beautiful combination"
-						+" of sun and sea. Also you can be informed for historical data for each "
-						+"beach that is displayed, how you can reach it and useful "
-						+"points of interests near them.We hope to find our material useful. "
-						+"Have a nice navigation.";
+		var intro_title_english="Administration Panel!";
+		var intro_text_english="Please select your image file to upload to database ";
 
 		var footerdevelopment_text_english="Website development <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Apostolakis"
 						    +" Myron</a>";
@@ -162,9 +161,14 @@ jQuery(document).ready(function(){
 		var link6_text_english="Contact Us";
 		var link7_text_english="Register";
 		var link8_text_english="Admin area";
-
-		var welcome_text_english="Welcome, ";
-
+		var select_img_txt_english="Select image to upload:";	
+		var lat_txt_english="latitude:";	
+		var longit_txt_english="longitude:";	
+		var desc_txt_english="Description:";	
+		var rating_txt_english="Rating:";
+		var category_txt_english="Category:";
+		var submit_txt_english="Submit";		
+		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
 		$("#email").attr("placeholder", email_text_english);
@@ -181,16 +185,44 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_english);
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
+		/**/
+		$("#select_img_txt").html(select_img_txt_english);
+		$("#lat_txt").html(lat_txt_english);
+		$("#longit_txt").html(longit_txt_english);
+		$("#desc_txt").html(desc_txt_english);
+		$("#rating_txt").html(rating_txt_english);
+		$("#category_txt").html(category_txt_english);
+		$("#upload_img").html(submit_txt_english);	
 		
-		$("#welcomemsg").html(welcome_text_english);		
+		
+
 	}
 	
         //alert('Button clicked.');
 	//alert('Button clicked4.');
 
     });
+/*    
+$("#upload_img").click(function () {
+    //alert("Hey!!");
+	 callUploadManagerScript();
+		//upload_manager.php
 });
+*/
 
+});
+/*
+function callUploadManagerScript() {
+	  
+    //call php script to locate nearest beach with ajax
+	 $.ajax({
+      url: "upload_manager.php"
+    }).done(function(data) {
+      console.log(data);
+      
+   });
+  
+}*/ 
 </script>
 
 
@@ -207,7 +239,7 @@ jQuery(document).ready(function(){
 <!--menu-->
 <div class="container">
 	<div class="row">
-        <div class="col-xs-12">
+                <div class="col-xs-12">
 		 	<nav class="navbar navbar-inverse custom-nav">
 			  <div class="container-fluid">
 			    <!----><div class="navbar-header">
@@ -332,7 +364,7 @@ jQuery(document).ready(function(){
 <!--main area-->
 <?php
 $role=$_SESSION["role"];
-echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"];
+echo "Welcome, ".$role." ".$_SESSION["myusername"];
 //session_write_close (); 
 ?>
      <div class="container">
@@ -344,28 +376,28 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 			<div class="blog">
 			    <section class="post">
 				<h2 class="post-title" id="introtitle">Administration Panel</h2>
-				<p class="post-excerpt" id="introtext">Please select your file to upload to database </p>
+				<p class="post-excerpt" id="introtext">Please select your image file to upload to database </p>
 				<form role="form" method="post" action="upload_manager.php" enctype="multipart/form-data">
 				   <div class="form-group">
-				    <label for="image">Select image to upload:</label>
+				    <label for="image"><span id="select_img_txt">Select image to upload:</span></label>
 				    <input type="file" id="image" name="image">
 				   </div>  
 				  <div class="form-group">
-				    <label for="latitude">latitude:</label>
+				    <label for="latitude"><span id="lat_txt">latitude:</span></label>
 				    <input type="text" class="form-control" id="latitude" name="latitude">
 				  </div>
 				  <div class="form-group">
-				    <label for="longitude">longitude:</label>
+				    <label for="longitude"><span id="longit_txt">longitude:</span></label>
 				    <input type="text" class="form-control" id="longitude" name="longitude">
 				  </div>
 				  <div class="form-group">
-				    <label for="description">Description:</label>
+				    <label for="description"><span id="desc_txt">Description:</span></label>
 				    <textarea class="form-control" rows="5" id="description" name="description"></textarea>
 				  </div>
 				  <div class="form-group">
-				    <label for="rating">Rating:</label>
+				    <label for="rating"><span id="rating_txt">Rating:</span></label>
 				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="rating" name="rating">
+				   <select class="form-control" id="rating" name="rating">
    				 <option value="" disabled="disabled" selected="selected">Please select rating</option>
     				 <option value="1">One</option>
     				 <option value="2">Two</option>
@@ -380,7 +412,7 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 					</select>
 				  </div>
 				  <div class="form-group">
-				    <label for="category">Category:</label>
+				    <label for="category"><span id="category_txt">Category:</span></label>
 				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
 				   <select id="category" name="category">
    				 <option value="" disabled="disabled" selected="selected">Please select category</option>
@@ -391,7 +423,9 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
     				 <option value="Rock Beach">Rock Beach</option>		
 					</select>
 				  </div>
-				    <input type="submit" value="Upload Image" name="submit">
+				  
+				  <button type="submit" id="upload_img" class="btn btn-default">Submit</button> 
+				  <!-- <input type="submit" id="upload_img" value="Upload Image" name="submit"> action="upload_manager.php"-->
 				</form>
 			    </section>
 			</div>
@@ -413,63 +447,44 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
   
     </div>
 
-<div class="container">
+     <div class="container">
   
             <div class="row footer">
-                <div class="col-xs-5">
-           			<ul class="nav navbar-nav rrssb-buttons clearfix">
-							<li class="active">
-								<a href="http://getbootstrap.com/" target="_blank">
-									<img class="img-responsive center-block" src="images/logos/logoBootstrap.png" alt="Bootstrap">
-								</a>
-							</li>
-							<li class="active">
-								<a href="https://ellak.gr/" target="_blank">
-									<img class="img-responsive center-block" src="images/logos/logoEllak.png" alt="Bootstrap"></a>
-							</li>
-							<li class="active">
-								<a href="https://ma.ellak.gr/" target="_blank">
-									<img class="img-responsive center-block" src="images/logos/logoMonadesAristeias.png" alt="Bootstrap">
-								</a>
-							</li>
-							<li class="active">
-								<a href="http://www.uoc.gr/" target="_blank">
-									<img class="img-responsive center-block" src="images/logos/logoPK.png" alt="Bootstrap">
-								</a>
-							</li>
-  							<li class="rrssb-facebook">
-    							<a href="https://www.facebook.com/sharer/sharer.php?u=http://ellaksrv.datacenter.uoc.gr/~user738/greekbeaches/home.php" class="popup">
-      						<span class="rrssb-icon">
-        							<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="29" height="29" viewBox="0 0 29 29">
-        			 					<path d="M26.4 0H2.6C1.714 0 0 1.715 0 2.6v23.8c0 .884 1.715 2.6 2.6 2.6h12.393V17.988h-3.996v-3.98h3.997v-3.062c0-3.746 2.835-5.97 6.177-5.97 1.6 0 2.444.173 2.845.226v3.792H21.18c-1.817 0-2.156.9-2.156 2.168v2.847h5.045l-.66 3.978h-4.386V29H26.4c.884 0 2.6-1.716 2.6-2.6V2.6c0-.885-1.716-2.6-2.6-2.6z"
-          							class="cls-2" fill-rule="evenodd"/>
-        							</svg>
-      						</span>
-    							</a>
-  							</li>  
-  							<li class="rrssb-twitter">
-   						 	<a href="https://twitter.com/intent/tweet?text=http://ellaksrv.datacenter.uoc.gr/~user738/greekbeaches/home.php"
-    							class="popup">
-      							<span class="rrssb-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><path d="M24.253 8.756C24.69 17.08 18.297 24.182 9.97 24.62c-3.122.162-6.22-.646-8.86-2.32 2.702.18 5.375-.648 7.507-2.32-2.072-.248-3.818-1.662-4.49-3.64.802.13 1.62.077 2.4-.154-2.482-.466-4.312-2.586-4.412-5.11.688.276 1.426.408 2.168.387-2.135-1.65-2.73-4.62-1.394-6.965C5.574 7.816 9.54 9.84 13.802 10.07c-.842-2.738.694-5.64 3.434-6.48 2.018-.624 4.212.043 5.546 1.682 1.186-.213 2.318-.662 3.33-1.317-.386 1.256-1.248 2.312-2.4 2.942 1.048-.106 2.07-.394 3.02-.85-.458 1.182-1.343 2.15-2.48 2.71z"/></svg></span>
-   			 				</a>
-  							</li>
-  							</ul>
-            		</div>
-                	<div class="col-xs-4">
-                	    <p id="footerdevelopment">Website development <a href="http://myapos.oncrete.gr" target="_blank">Apostolakis Myron</a></p>
-                	</div>
-                	<div class="col-xs-3">
-                  	  <p id="footercodeschool">&COPY; Monades Aristeias Logismikou - <a href="https://ma.ellak.gr/edu/course/view.php?id=49" target="_blank">2nd Code School</a></p>
-                	</div>
+                <div class="col-xs-4">
+                    <ul class="nav navbar-nav">
+				<li class="active">
+					<a href="http://getbootstrap.com/" target="_blank">
+						<img class="img-responsive center-block" src="images/logos/logoBootstrap.png" alt="Bootstrap">
+					</a>
+				</li>
+				<li class="active">
+					<a href="https://ellak.gr/" target="_blank">
+						<img class="img-responsive center-block" src="images/logos/logoEllak.png" alt="Bootstrap"></a>
+
+				</li>
+				<li class="active">
+					<a href="https://ma.ellak.gr/" target="_blank">
+						<img class="img-responsive center-block" src="images/logos/logoMonadesAristeias.png" alt="Bootstrap">
+					</a>
+				</li>
+
+				<li class="active">
+					<a href="http://www.uoc.gr/" target="_blank">
+						<img class="img-responsive center-block" src="images/logos/logoPK.png" alt="Bootstrap">
+					</a>
+				</li>
+	 	    </ul>
+                </div>
+                <div class="col-xs-4">
+                    <p id="footerdevelopment">Website development <a href="http://myapos.oncrete.gr" target="_blank">Apostolakis Myron</a></p>
+                </div>
+                <div class="col-xs-4">
+                    <p id="footercodeschool">&COPY; Monades Aristeias Logismikou - <a href="https://ma.ellak.gr/edu/course/view.php?id=49" target="_blank">2nd Code School</a></p>
+                </div>
             </div>      
-     </div> 
-             
+  
+    </div>        
 </div> <!--end of big_wrapper-->     
         
     </body>
 </html>
-
-EOL;
-}
-
-?>

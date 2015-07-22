@@ -117,6 +117,14 @@ jQuery(document).ready(function(){
 		var link8_text_greek="Διαχείριση";
 		var welcome_text_greek="Καλωσήρθατε, ";
 		
+		var beaches_text_greek ="Οι παραλίες μας";
+		
+		var found_text_greek="Βρέθηκαν παραλίες:";
+		
+		var info_text_greek="Πληροφορίες &raquo;";
+
+		var googlemapbtn_text_greek ="Χάρτης Google &raquo;";
+		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -136,7 +144,11 @@ jQuery(document).ready(function(){
 		$("#link8").html(link8_text_greek);
 		
 		$("#welcomemsg").html(welcome_text_greek);
+		$("#beaches").html(beaches_text_greek);		
 		
+		$("#found").html(found_text_greek);	
+		$(".info").html(info_text_greek);
+		$(".googlemapbtn").html(googlemapbtn_text_greek);
 	}
 
 	else if (lan=="EN"){
@@ -173,7 +185,15 @@ jQuery(document).ready(function(){
 		
 		var welcome_text_english="Welcome, ";
 
+		var beaches_text_english="Our beaches";
 
+		var found_text_english="Found beaches:";
+		
+		var info_text_english="Information &raquo;";
+		
+		var googlemapbtn_text_english ="Google Map &raquo;";
+		
+		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
 		$("#email").attr("placeholder", email_text_english);
@@ -190,7 +210,11 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_english);
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
-		
+		$("#welcomemsg").html(welcome_text_english);	
+		$("#beaches").html(beaches_text_english);		
+		$("#found").html(found_text_english);	
+		$(".info").html(info_text_english);	
+		$(".googlemapbtn").html(googlemapbtn_text_greek);		
 
 	}
 	
@@ -385,29 +409,26 @@ console.log(classitem);
 			      <ul class="nav navbar-nav">
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
 				<li><a href="profile.php" id="link3">Profile</a></li>
-				<li><a href="gallery.php" id="link4">Gallery</a></li> 
-				<li><a href="services.php" id="link5">Services</a></li> 
+				<li><a href="gallery.php" id="link4">Gallery</a></li>  
 				<li><a href="contact.php" id="link6">Contact Us</a></li> 
  				<?php
 					$role=$_SESSION["role"];
 					
-					if ($role!="guest"){
+					if ($role=="user"){
 					
-					echo "";
-					
+					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 					
 					}
-					else{
+					else if ($role=="guest"){
 					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
 					}
-
-					if ($role=="admin"){
+					else if ($role=="admin"){
 					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
 					
 					}
 					else{
 					echo "";
 					}
-				    ?>
+				 ?>
 				
 			      </ul>
 			    </div>
@@ -502,12 +523,12 @@ $role=$_SESSION["role"];
 echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"];
 //session_write_close (); 
 ?>
-<!-- 1i tetrada----------------------------------------------------------------------------------------------->
+<!-- 1i tetrada--------------------------------------------------------------------------------------------- -->
 
 <div class="container">
            <div class="row">
                 <div class="col-md-12 col-centered text-center">
-                    <h3>Our beaches</h3>
+                    <h3><span id="beaches">Our beaches </span></h3>
                 </div>
             </div>  
 <?php print_images()?>

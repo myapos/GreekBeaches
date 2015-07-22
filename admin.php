@@ -78,14 +78,10 @@ jQuery(document).ready(function(){
 		$("#LangSelector").html(lan);
 
 		var title_greek="Ελληνικές παραλίες";
-		var intro_title_greek="Καλωσήρθατε!";
+		var intro_title_greek="Πίνακας ελέγχου!";
 
 
-		var intro_text_greek="Καλωσήρθατε στον διαδικτυακό μας τόπο. Στην παρούσα ιστοσελίδα μπορείτε να βρείτε χρήσιμες πληροφορίες"
-						+" για τις ελληνικές παραλίες. Η Ελλάδα είναι διάσημη για τον υπέροχο συνδυασμό ήλιου"
-						+" και θάλασσας. Ακόμα μπορείτε να μάθετε ιστορικές πληροφορίες για κάθε παραλία, τρόπο"
-						+" πρόσβασης και χρήσιμα κοντινά σημεία ενδιαφέροντος. Ελπίζουμε να βρείτε το υλικό μας"
-						+" ενδιαφέρον. Καλή πλοήγηση.";
+		var intro_text_greek="Παρακαλώ επιλέξτε αρχείο εικόνας για μεταφόρτωση";
 
 		var footerdevelopment_text_greek="Κατασκευή ιστοσελίδας <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Αποστολάκης "
 						+" Μύρων</a>";
@@ -103,7 +99,14 @@ jQuery(document).ready(function(){
 		var link6_text_greek="Επικοινωνία";
 		var link7_text_greek="Εγγραφή";
 		var link8_text_greek="Διαχείριση";
-
+		var select_img_txt_greek="Επιλέξτε εικόνα για μεταφόρτωση:";		
+		var lat_txt_greek="γεωγραφικό πλάτος:";	
+		var longit_txt_greek="γεωγραφικό μήκος:";
+		var desc_txt_greek="Περιγραφή:";	
+		var rating_txt_greek="Αξιολόγηση:";
+		var category_txt_greek="Κατηγορία:";
+		var submit_txt_greek="Υποβολή";		
+		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -121,6 +124,14 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_greek);
 		$("#link7").html(link7_text_greek);
 		$("#link8").html(link8_text_greek);
+		/**/	
+		$("#select_img_txt").html(select_img_txt_greek);
+		$("#lat_txt").html(lat_txt_greek);
+		$("#longit_txt").html(longit_txt_greek);
+		$("#desc_txt").html(desc_txt_greek);
+		$("#rating_txt").html(rating_txt_greek);
+		$("#category_txt").html(category_txt_greek);
+		$("#upload_img").html(submit_txt_greek);
 		
 	}
 
@@ -131,13 +142,8 @@ jQuery(document).ready(function(){
 		//$("#myInput").val(lan);
 		$("#LangSelector").html(lan);
 		var title_english="Greek Beaches";
-		var intro_title_english="Welcome!";
-		var intro_text_english="Welcome to our web site. Here you can find useful information"
-						+"for the best greek beaches. Greece is famous for beautiful combination"
-						+" of sun and sea. Also you can be informed for historical data for each "
-						+"beach that is displayed, how you can reach it and useful "
-						+"points of interests near them.We hope to find our material useful. "
-						+"Have a nice navigation.";
+		var intro_title_english="Administration Panel!";
+		var intro_text_english="Please select your image file to upload to database ";
 
 		var footerdevelopment_text_english="Website development <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Apostolakis"
 						    +" Myron</a>";
@@ -155,8 +161,14 @@ jQuery(document).ready(function(){
 		var link6_text_english="Contact Us";
 		var link7_text_english="Register";
 		var link8_text_english="Admin area";
-
-
+		var select_img_txt_english="Select image to upload:";	
+		var lat_txt_english="latitude:";	
+		var longit_txt_english="longitude:";	
+		var desc_txt_english="Description:";	
+		var rating_txt_english="Rating:";
+		var category_txt_english="Category:";
+		var submit_txt_english="Submit";		
+		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
 		$("#email").attr("placeholder", email_text_english);
@@ -173,6 +185,15 @@ jQuery(document).ready(function(){
 		$("#link6").html(link6_text_english);
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
+		/**/
+		$("#select_img_txt").html(select_img_txt_english);
+		$("#lat_txt").html(lat_txt_english);
+		$("#longit_txt").html(longit_txt_english);
+		$("#desc_txt").html(desc_txt_english);
+		$("#rating_txt").html(rating_txt_english);
+		$("#category_txt").html(category_txt_english);
+		$("#upload_img").html(submit_txt_english);	
+		
 		
 
 	}
@@ -181,8 +202,27 @@ jQuery(document).ready(function(){
 	//alert('Button clicked4.');
 
     });
+/*    
+$("#upload_img").click(function () {
+    //alert("Hey!!");
+	 callUploadManagerScript();
+		//upload_manager.php
 });
+*/
 
+});
+/*
+function callUploadManagerScript() {
+	  
+    //call php script to locate nearest beach with ajax
+	 $.ajax({
+      url: "upload_manager.php"
+    }).done(function(data) {
+      console.log(data);
+      
+   });
+  
+}*/ 
 </script>
 
 
@@ -336,28 +376,28 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 			<div class="blog">
 			    <section class="post">
 				<h2 class="post-title" id="introtitle">Administration Panel</h2>
-				<p class="post-excerpt" id="introtext">Please select your file to upload to database </p>
+				<p class="post-excerpt" id="introtext">Please select your image file to upload to database </p>
 				<form role="form" method="post" action="upload_manager.php" enctype="multipart/form-data">
 				   <div class="form-group">
-				    <label for="image">Select image to upload:</label>
+				    <label for="image"><span id="select_img_txt">Select image to upload:</span></label>
 				    <input type="file" id="image" name="image">
 				   </div>  
 				  <div class="form-group">
-				    <label for="latitude">latitude:</label>
+				    <label for="latitude"><span id="lat_txt">latitude:</span></label>
 				    <input type="text" class="form-control" id="latitude" name="latitude">
 				  </div>
 				  <div class="form-group">
-				    <label for="longitude">longitude:</label>
+				    <label for="longitude"><span id="longit_txt">longitude:</span></label>
 				    <input type="text" class="form-control" id="longitude" name="longitude">
 				  </div>
 				  <div class="form-group">
-				    <label for="description">Description:</label>
+				    <label for="description"><span id="desc_txt">Description:</span></label>
 				    <textarea class="form-control" rows="5" id="description" name="description"></textarea>
 				  </div>
 				  <div class="form-group">
-				    <label for="rating">Rating:</label>
+				    <label for="rating"><span id="rating_txt">Rating:</span></label>
 				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="rating" name="rating">
+				   <select class="form-control" id="rating" name="rating">
    				 <option value="" disabled="disabled" selected="selected">Please select rating</option>
     				 <option value="1">One</option>
     				 <option value="2">Two</option>
@@ -372,9 +412,9 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 					</select>
 				  </div>
 				  <div class="form-group">
-				    <label for="category">Category:</label>
+				    <label for="category"><span id="category_txt">Category:</span></label>
 				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="category" name="category">
+				   <select class="form-control" id="category" name="category">
    				 <option value="" disabled="disabled" selected="selected">Please select category</option>
     				 <option value="Swimming">Swimming</option>
     				 <option value="Sea sports">Sea sport</option>
@@ -383,7 +423,9 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
     				 <option value="Rock Beach">Rock Beach</option>		
 					</select>
 				  </div>
-				    <input type="submit" value="Upload Image" name="submit">
+				  
+				  <button type="submit" id="upload_img" class="btn btn-default">Submit</button> 
+				  <!-- <input type="submit" id="upload_img" value="Upload Image" name="submit"> action="upload_manager.php"-->
 				</form>
 			    </section>
 			</div>

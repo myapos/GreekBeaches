@@ -78,7 +78,7 @@ jQuery(document).ready(function(){
 		$("#LangSelector").html(lan);
 
 		var title_greek="Ελληνικές παραλίες";
-		var intro_title_greek="Καλωσήρθατε!";
+		var intro_title_greek="Παρακαλώ καταχωρήστε τα στοιχεία επικοινωνίας σας!";
 
 
 		var intro_text_greek="Καλωσήρθατε στον διαδικτυακό μας τόπο. Στην παρούσα ιστοσελίδα μπορείτε να βρείτε χρήσιμες πληροφορίες"
@@ -105,6 +105,12 @@ jQuery(document).ready(function(){
 
 		var welcome_text_greek="Καλωσήρθατε, ";
 
+		var email_txt_greek="Ηλεκτρονική διεύθυνση";
+		var pwd_txt_greek="Συνθηματικό";
+		var remember_txt_greek="Να με θυμάσαι";
+		var submit_txt_greek="Υποβολή";
+		
+		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -123,6 +129,11 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_greek);
 		
 		$("#welcomemsg").html(welcome_text_greek);
+		$("#email_txt").html(email_txt_greek);	
+		$("#pwd_txt").html(pwd_txt_greek);	
+		$("#remember_txt").html(remember_txt_greek);	
+		$("#submitbtn").html(submit_txt_greek);	
+		//$("#submitbtn").attr('value', submit_txt_greek);
 		
 	}
 
@@ -133,7 +144,7 @@ jQuery(document).ready(function(){
 		//$("#myInput").val(lan);
 		$("#LangSelector").html(lan);
 		var title_english="Greek Beaches";
-		var intro_title_english="Welcome!";
+		var intro_title_english="Please register your contact information";
 		var intro_text_english="Welcome to our web site. Here you can find useful information"
 						+"for the best greek beaches. Greece is famous for beautiful combination"
 						+" of sun and sea. Also you can be informed for historical data for each "
@@ -158,6 +169,11 @@ jQuery(document).ready(function(){
 		var link7_text_english="Register";
 
 		var welcome_text_english="Welcome, ";
+		var email_txt_english="Email";
+		var pwd_txt_english="Password";
+		var remember_txt_english="Remember me";
+		var submit_txt_english="Submit";
+		
 		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
@@ -176,6 +192,11 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_english);
 		
 		$("#welcomemsg").html(welcome_text_english);		
+		$("#email_txt").html(email_txt_english);	
+		$("#pwd_txt").html(pwd_txt_english);	
+		$("#remember_txt").html(remember_txt_english);	
+		$("#submitbtn").html(submit_txt_english);	
+		//$("#submitbtn").attr('value', submit_txt_english);
 	}
 	
         //alert('Button clicked.');
@@ -211,28 +232,25 @@ jQuery(document).ready(function(){
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
 				<li><a href="profile.php" id="link3">Profile</a></li>
 				<li><a href="gallery.php" id="link4">Gallery</a></li> 
-				<li><a href="services.php" id="link5">Services</a></li> 
 				<li><a href="contact.php" id="link6">Contact Us</a></li> 
  				<?php
 					$role=$_SESSION["role"];
 					
-					if ($role!="guest"){
+					if ($role=="user"){
 					
-					echo "";
-					
+					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 					
 					}
-					else{
+					else if ($role=="guest"){
 					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
 					}
-
-					if ($role=="admin"){
+					else if ($role=="admin"){
 					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
 					
 					}
 					else{
 					echo "";
 					}
-				    ?>
+				 ?>
 				
 			      </ul>
 			    </div>
@@ -336,20 +354,20 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
   		<div class="col-sm-6">
 			<div class="blog">
 			    <section class="post">
-				<h2 class="post-title" id="introtitle">Register form!</h2>
+				<h2 class="post-title" id="introtitle">Please register your contact information</h2>
 				<form role="form" method="post" action="sign.php">
 				  <div class="form-group">
-				    <label for="email">Email:</label>
-				    <input type="text" class="form-control" id="email" name="email">
+				    <label for="email"><span id="email_txt">Email: </span><span>*</span>:</label>
+				    <input type="text" class="form-control" id="email-contact" placeholder="Email"/>
 				  </div>
 				  <div class="form-group">
-				    <label for="pwd">Password:</label>
-				    <input type="password" class="form-control" id="pwd" name="password">
+				  	 <label for="pwd"><span id="pwd_txt">Password: </span><span>*</span>:</label>
+				    <input type="password" class="form-control" id="pwd" name="password" placeholder="password">
 				  </div>
 				  <div class="checkbox">
-				    <label><input type="checkbox"> Remember me</label>
+				    <label><input type="checkbox"> <span id="remember_txt">Remember me</span></label>
 				  </div>
-				  <button type="submit" class="btn btn-default">Submit</button>
+				  <button type="submit" id="submitbtn" class="btn btn-default">Submit</button>
 				</form>
 			    </section>
 			</div>

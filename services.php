@@ -79,14 +79,10 @@ jQuery(document).ready(function(){
 		$("#LangSelector").html(lan);
 
 		var title_greek="Ελληνικές παραλίες";
-		var intro_title_greek="Καλωσήρθατε!";
+		var intro_title_greek="Καλωσήρθατε στη σελίδα υπηρεσιών!";
 
 
-		var intro_text_greek="Καλωσήρθατε στον διαδικτυακό μας τόπο. Στην παρούσα ιστοσελίδα μπορείτε να βρείτε χρήσιμες πληροφορίες"
-						+" για τις ελληνικές παραλίες. Η Ελλάδα είναι διάσημη για τον υπέροχο συνδυασμό ήλιου"
-						+" και θάλασσας. Ακόμα μπορείτε να μάθετε ιστορικές πληροφορίες για κάθε παραλία, τρόπο"
-						+" πρόσβασης και χρήσιμα κοντινά σημεία ενδιαφέροντος. Ελπίζουμε να βρείτε το υλικό μας"
-						+" ενδιαφέρον. Καλή πλοήγηση.";
+		var intro_text_greek="";
 
 		var footerdevelopment_text_greek="Κατασκευή ιστοσελίδας <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Αποστολάκης "
 						+" Μύρων</a>";
@@ -107,6 +103,21 @@ jQuery(document).ready(function(){
 		
 		var welcome_text_greek="Καλωσήρθατε, ";
 		
+		var geolocation_text_greek="Παρακαλώ πατήστε το κουμπί Geolocation για να υπολογίσετε την θέση σας και να προβάλλετε την "+
+											"πλησιέστερη παραλία σε εσάς";
+
+		var lat_btn_text_greek="Γεωγραφικό πλάτος χρήστη:";
+		var lon_btn_text_greek="Γεωγραφικό μήκος χρήστη:";
+		var nearest_beach_text_greek="Η κοντινότερη παραλία είναι:";
+		var select_beach_txt_greek="Οι παραλίες που ανήκουν στην επιλεχθείσα κατηγορία είναι:";
+		var select_beach_categ_txt_greek="Επιλέξτε κατηγορία παραλίας";
+		var select_beach_categ_list_txt_greek="Παρακαλώ επιλέξτε κατηγορία";
+		var order_by_desc_txt_greek="Βαθμολογική ταξινόμηση";
+		var select_beach_categ_btn_greek="Επιλογή";		
+		var desc_suggestion_txt_greek="Πατήστε το κουμπί για να σας προταθεί μια παραλία";
+		var suggest_desc_txt_greek="Πρότεινε!";		
+		var suggestion_txt_greek="Η σημερινή πρόταση παραλίας είναι:";	
+		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -125,7 +136,23 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_greek);
 		$("#link8").html(link8_text_greek);
 		
-		$("#welcomemsg").html(welcome_text_greek);		
+		$("#welcomemsg").html(welcome_text_greek);	
+		
+		
+		$("#geoloc_btn_txt").html(geolocation_text_greek);	
+		
+		$("#long_btn").html(lon_btn_text_greek);
+		$("#lat_btn").html(lat_btn_text_greek);
+						
+		$("#nearest_beach_desc").html(nearest_beach_text_greek);
+		$("#select_beach_txt").html(select_beach_txt_greek);
+		$("#select_beach_categ_txt").html(select_beach_categ_txt_greek);
+		$("#select_beach_categ_list_txt").html(select_beach_categ_list_txt_greek);
+		$("#order_by_desc").html(order_by_desc_txt_greek);
+		$("#select_beach_categ_btn").html(select_beach_categ_btn_greek);
+		$("#desc_suggestion").html(desc_suggestion_txt_greek);
+		$("#suggest_desc").html(suggest_desc_txt_greek);
+		$("#suggestion_txt").html(suggestion_txt_greek);
 	}
 
 	else if (lan=="EN"){
@@ -135,13 +162,8 @@ jQuery(document).ready(function(){
 		//$("#myInput").val(lan);
 		$("#LangSelector").html(lan);
 		var title_english="Greek Beaches";
-		var intro_title_english="Welcome!";
-		var intro_text_english="Welcome to our web site. Here you can find useful information"
-						+"for the best greek beaches. Greece is famous for beautiful combination"
-						+" of sun and sea. Also you can be informed for historical data for each "
-						+"beach that is displayed, how you can reach it and useful "
-						+"points of interests near them.We hope to find our material useful. "
-						+"Have a nice navigation.";
+		var intro_title_english="Welcome to services page!";
+		var intro_text_english="";
 
 		var footerdevelopment_text_english="Website development <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Apostolakis"
 						    +" Myron</a>";
@@ -162,7 +184,20 @@ jQuery(document).ready(function(){
 		
 		var welcome_text_english="Welcome, ";
 
+		var geolocation_text_english="Please press button Geolocation to find your position and the nearest beach to you";
 
+		var lat_btn_text_english="User latitude:";
+		var lon_btn_text_english="User longitude:";
+		var nearest_beach_text_english="Nearest beach is:";
+		var select_beach_txt_english="Beaches of selected category are:";
+		var select_beach_categ_txt_english="Select beaches from category";
+		var select_beach_categ_list_txt_english="Please select category";
+		var order_by_desc_txt_english="Order By Rating";
+		var select_beach_categ_btn_english="Select";
+		var desc_suggestion_txt_english="Press button to suggest a beach.";
+		var suggest_desc_txt_english="Suggest!";	
+		var suggestion_txt_english="Today's beach suggestion is:";		
+		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
 		$("#email").attr("placeholder", email_text_english);
@@ -180,8 +215,24 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
 		
-		$("#welcomemsg").html(welcome_text_english);			
-
+		$("#welcomemsg").html(welcome_text_english);	
+		
+		$("#geoloc_btn_txt").html(geolocation_text_english);
+			
+		$("#lat_btn").html(lat_btn_text_english);
+		$("#long_btn").html(lon_btn_text_english);
+				
+		$("#nearest_beach_desc").html(nearest_beach_text_english);
+		$("#select_beach_txt").html(select_beach_txt_english);
+		$("#select_beach_categ_txt").html(select_beach_categ_txt_english);
+		$("#select_beach_categ_list_txt").html(select_beach_categ_list_txt_english);
+		$("#order_by_desc").html(order_by_desc_txt_english);
+		$("#select_beach_categ_btn").html(select_beach_categ_btn_english);
+		$("#desc_suggestion").html(desc_suggestion_txt_english);
+		$("#suggest_desc").html(suggest_desc_txt_english);
+		$("#suggestion_txt").html(suggestion_txt_english);
+		
+		
 	}
 	
         //alert('Button clicked.');
@@ -190,7 +241,7 @@ jQuery(document).ready(function(){
     });
     
 //suggest
-    $("#suggest_btn").click(function () {
+$("#suggest_btn").click(function () {
     //alert("Hey!!");
 	  callSuggestScript();
 
@@ -198,7 +249,7 @@ jQuery(document).ready(function(){
     
 //select beach
 
-  $("#select_beach_btn").click(function () {
+$("#select_beach_btn").click(function () {
     //alert("Hey!!");
 	  callSelectBeachScript();
 
@@ -207,7 +258,7 @@ jQuery(document).ready(function(){
 //geolocation    
    
 
-    $("#geoloc_btn").click(function () {
+$("#geoloc_btn").click(function () {
     //alert("Hey!!");
 
     if (navigator.geolocation) {
@@ -446,29 +497,25 @@ $.ajax({
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
 				<li><a href="profile.php" id="link3">Profile</a></li>
 				<li><a href="gallery.php" id="link4">Gallery</a></li> 
-				<li><a href="services.php" id="link5">Services</a></li> 
 				<li><a href="contact.php" id="link6">Contact Us</a></li> 
  				<?php
 					$role=$_SESSION["role"];
 					
-					if ($role!="guest"){
+					if ($role=="user"){
 					
-					echo "";
-					
+					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 					
 					}
-					else{
+					else if ($role=="guest"){
 					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
 					}
-
-					if ($role=="admin"){
+					else if ($role=="admin"){
 					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
 					
 					}
 					else{
 					echo "";
 					}
-				    ?>
-				
+				 ?>		
 			      </ul>
 			    </div>
 				<form class="navbar-form navbar-left custom-form" method="post" <?php
@@ -571,8 +618,8 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 			<div class="blog">
 			    <section class="post">
 				<h2 class="post-title" id="introtitle">Welcome to services page!</h2>
-				<p class="post-excerpt" id="geolocation"> Please press button to find your position and the nearest beach to 
-					you<br>
+				<p class="post-excerpt" id="geolocation"> <span id="geoloc_btn_txt">Please press button Geolocation to find 
+				your position and the nearest beach to	you</span><br>
 					<a class="btn btn-default" id="geoloc_btn" role="button"> Geolocation</a><br>
 					<!--
 					<div id="lbl_user_latitude">User latitude:<div id="user_latitude"></div>	</div>
@@ -581,14 +628,15 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 					
 					<form role="form" method="post" id="nearest_beach_form">
   						<div class="form-group">
-  						  <label for="user_latitude">User latitude:</label>
+  						  <label for="user_latitude"><span id="lat_btn">User latitude:</span></label>
   						  <input type="text" class="form-control" id="user_latitude" name="user_latitude">
   						</div>
   						<div class="form-group">
-   						<label for="user_longitude">User longitude</label>
+   						<label for="user_longitude"><span id="long_btn">User longitude</span></label>
     						<input type="text" class="form-control" id="user_longitude" name="user_longitude">
   						</div>
-  						<button type="submit" name="submit" class="btn btn-default" style="display:none;">Get nearest beach</button>
+  						<button type="submit" name="submit" class="btn btn-default" style="display:none;">
+  						<span id="nearest_beach">Get nearest beach</span></button>
 					</form>
 					<!--<?php 
 						if(isset($_POST['submit'])) { 
@@ -597,31 +645,31 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 					} 
 					?>-->
 					<!---->
-					 Nearest beach is:<div id="nearest_output"> </div>
+					 <span id="nearest_beach_desc">Nearest beach is:</span><div id="nearest_output"> </div>
 					 <div id="mapholder2"></div>
-					 Beaches of selected category are:<div id="selectBeachoutput"> </div>
+					 <span id="select_beach_txt">Beaches of selected category are:</span><div id="selectBeachoutput"> </div>
 					 <div id="mapblock"></div>
 					 
 				</p>
-				<p class="post-excerpt" id="choose_beach">Select beaches from category 
+				<p class="post-excerpt" id="choose_beach"><span id="select_beach_categ_txt">Select beaches from category</span> 
 				
 					<form role="form" method="post" id="select_beach_form">
-  						<select id="categoryBeach" name="categoryBeach">
-   					 <option value="" disabled="disabled" selected="selected">Please select category</option>
+  						<select class="form-control" id="categoryBeach" name="categoryBeach">
+   					 <option value="" disabled="disabled" selected="selected"><span id="select_beach_categ_list_txt">Please select category</span></option>
     					 <option value="Swimming">Swimming</option>
     					 <option value="Sea sports">Sea sport</option>
     					 <option value="Fishing">Fishing</option>
     					 <option value="Sand">Sand</option>
     					 <option value="Rock Beach">Rock Beach</option>		
 						</select>
-						<input type="checkbox" id="orderByRating" name="orderByRating"> Order By Rating<br>
-  						<a class="btn btn-default" id="select_beach_btn" role="button"> Select</a><br>		
+						<input type="checkbox" id="orderByRating" name="orderByRating"> <span id="order_by_desc">Order By Rating</span><br>
+  						<a class="btn btn-default" id="select_beach_btn" role="button"> <span id="select_beach_categ_btn">Select</span></a><br>		
   				</form>
 				
 				</p>
-				<p class="post-excerpt" id="suggest">Press button to suggest a beach.
-					<a class="btn btn-default" id="suggest_btn" role="button"> Suggest</a><br>
-					Today's beach suggestion is:<div id="suggest_output"> </div> 
+				<p class="post-excerpt" id="suggest"><span id="desc_suggestion">Press button to suggest a beach.</span>
+					<a class="btn btn-default" id="suggest_btn" role="button"> <span id="suggest_desc">Suggest!</span></a><br>
+					<span id="suggestion_txt">Today's beach suggestion is:</span><div id="suggest_output"> </div> 
 					<div id="mapholder3"></div>
 				</p>
 				<!--

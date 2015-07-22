@@ -25,7 +25,7 @@ $sql="SELECT * FROM ".$tbl_name_image;
 $result = $conn->query($sql); //execute query
 
 if ($result->num_rows > 0) {
-echo "Found images:".$result->num_rows."<br>";
+echo "<span id=\"found\">Found beaches:</span>".$result->num_rows."<br>";
 
 $image_rows=floor($result->num_rows/4);
 $left_images=$result->num_rows%4;
@@ -58,8 +58,8 @@ echo "<img class=\"beach-img\" src=\"$path\" alt=\"test\">";
 echo "<p class=\"beach-description\">".$row["description"]."</p>";
 //echo"				<div class=\"beach-details beach_class_".$y.$x."\">";
 echo"				<div class=\"beach-details beach_class_".$row["id"]."\">";
-echo				 "<a class=\"btn btn-default beach_details_btn\" id= \"beach_button_id_".$row["id"]."\" role=\"button\">Information &raquo;</a>";
-echo				 "<a class=\"btn btn-default btnShow_".$row["id"]."\" role=\"button\">Google Map &raquo;</a>";
+echo				 "<a class=\"btn btn-default beach_details_btn\" id= \"beach_button_id_".$row["id"]."\" role=\"button\"><span class=\"info\">Information &raquo;</span></a>";
+echo				 "<a class=\"btn btn-default btnShow_".$row["id"]."\" role=\"button\"><span class=\"googlemapbtn\">Google Map &raquo;</span></a>";
 echo"           <div id=\"dialog_".$row["id"]."\" style=\"display: none\">";
 echo"             <div id=\"dvMap_".$row["id"]."\" style=\"height: 380px; width: 580px;\"> ";
 echo"               <textarea id=\"loc_info_".$row["id"]."\" name=\"hide\" style=\"display:none;\">".$row["latitude"].";".$row["longitude"]."</textarea>                                                                                          ";
@@ -103,8 +103,8 @@ echo "<img class=\"beach-img\" src=\"$path\" alt=\"test\">";
 
 echo" <p class=\"beach-description\">".$row["description"]."</p>";
 echo"				<div class=\"beach-details beach_class_".$row["id"]."\">";
-echo				 "<a class=\"btn btn-default beach_details_btn\" id= \"beach_button_id_".$row["id"]."\" role=\"button\">Information &raquo;</a>";
-echo				 "<a class=\"btn btn-default btnShow_".$row["id"]."\" role=\"button\">Google Map &raquo;</a>";
+echo				 "<a class=\"btn btn-default beach_details_btn\" id= \"beach_button_id_".$row["id"]."\" role=\"button\"><span class=\"info\">Information &raquo;</span></a>";
+echo				 "<a class=\"btn btn-default btnShow_".$row["id"]."\" role=\"button\"><span class=\"googlemapbtn\">Google Map &raquo;</span></a>";
 echo"           <div id=\"dialog_".$row["id"]."\" style=\"display: none\">";
 echo"             <div id=\"dvMap_".$row["id"]."\" style=\"height: 380px; width: 580px;\"> ";
 echo"               <textarea id=\"loc_info_".$row["id"]."\" name=\"hide\" style=\"display:none;\">".$row["latitude"].";".$row["longitude"]."</textarea>                                                                                          ";

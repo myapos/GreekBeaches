@@ -48,19 +48,7 @@ session_start();
 	 
     </script> -->
     
-<!--insert google map script
-<script type="text/javascript"
-src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script type="text/javascript" src="js/gmap3.min.js"></script>
--->
     
-    
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/jquery-ui.js" type="text/javascript"></script>
-<link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.9/themes/blitzer/jquery-ui.css"
-rel="stylesheet" type="text/css" />-->
-
 <script type="text/javascript">
 
 var lan="GR";
@@ -114,17 +102,7 @@ jQuery(document).ready(function(){
 		var link5_text_greek="Υπηρεσίες";
 		var link6_text_greek="Επικοινωνία";
 		var link7_text_greek="Εγγραφή";
-		var link8_text_greek="Διαχείριση";
-		var welcome_text_greek="Καλωσήρθατε, ";
-		
-		var beaches_text_greek ="Οι παραλίες μας";
-		
-		var found_text_greek="Βρέθηκαν παραλίες:";
-		
-		var info_text_greek="Πληροφορίες &raquo;";
 
-		var googlemapbtn_text_greek ="Χάρτης Google &raquo;";
-		
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
 		$("#email").attr("placeholder", email_text_greek);
@@ -141,14 +119,7 @@ jQuery(document).ready(function(){
 		$("#link5").html(link5_text_greek);
 		$("#link6").html(link6_text_greek);
 		$("#link7").html(link7_text_greek);
-		$("#link8").html(link8_text_greek);
 		
-		$("#welcomemsg").html(welcome_text_greek);
-		$("#beaches").html(beaches_text_greek);		
-		
-		$("#found").html(found_text_greek);	
-		$(".info").html(info_text_greek);
-		$(".googlemapbtn").html(googlemapbtn_text_greek);
 	}
 
 	else if (lan=="EN"){
@@ -181,19 +152,8 @@ jQuery(document).ready(function(){
 		var link5_text_english="Services";
 		var link6_text_english="Contact Us";
 		var link7_text_english="Register";
-		var link8_text_english="Admin area";
-		
-		var welcome_text_english="Welcome, ";
 
-		var beaches_text_english="Our beaches";
 
-		var found_text_english="Found beaches:";
-		
-		var info_text_english="Information &raquo;";
-		
-		var googlemapbtn_text_english ="Google Map &raquo;";
-		
-		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
 		$("#email").attr("placeholder", email_text_english);
@@ -209,12 +169,7 @@ jQuery(document).ready(function(){
 		$("#link5").html(link5_text_english);
 		$("#link6").html(link6_text_english);
 		$("#link7").html(link7_text_english);
-		$("#link8").html(link8_text_english);
-		$("#welcomemsg").html(welcome_text_english);	
-		$("#beaches").html(beaches_text_english);		
-		$("#found").html(found_text_english);	
-		$(".info").html(info_text_english);	
-		$(".googlemapbtn").html(googlemapbtn_text_english);		
+		
 
 	}
 	
@@ -222,163 +177,6 @@ jQuery(document).ready(function(){
 	//alert('Button clicked4.');
 
     });
-
-
-/*find all elements with classes who start with beach_class_ and save them in array. These are the buttons for informations. Then
-a modal window for each is goint to open*/
-/**/
-var found = [];
-
-$('div[class*="beach_class_"]').each(function() {
-  var classes = this.className.split(/\s+/),
-  $this = $(this);
-
-  $.each(classes, function(i, name) {
-      if (name.indexOf('beach_class_') === 0) {
-          //$this.removeClass(name);
-          found.push(name);
-      }
-  });
-});
-console.log(found);
-
-$.each(found, function( index, value ) {
-//alert( index + ": " + value +" length: "+value.length+"substr:"+value.substring(value.length-2,value.length)+" "+"\"."+value+"\"");
-//var classitem="\"."+value+"\"";
-var classitem="."+value.substring(value.length-2,value.length);
-var iditem="#beach_button_id_"+value.substring(value.length-2,value.length);
-var idmodalitem="#beach_details_modal_"+value.substring(value.length-2,value.length);
-//alert("iditem:"+iditem);
-//alert("classitem:"+classitem);
-//alert("iditem:"+iditem);
-//alert("idmodalitem:"+idmodalitem);
-$(iditem).click(function () {
-//alert("Hello from button:"+iditem);
-$(idmodalitem).dialog({
-                    width: 800,
-                    height: 600,
-                    modal: true,
-                    resizable: true,
-                    buttons: {
-                Close: function () {
-                    $(this).dialog('close');
-                    window.location.reload();
-                    
-                }
-            }
-                });
-                return false;
-});//end of button click
-}); //end of each
-
-/*google maps section */
-
-var foundbtnmaps = [];
-$('a[class*="btnShow_"]').each(function() {
-  var classes = this.className.split(/\s+/),
-  $this = $(this);
-
-  $.each(classes, function(i, name) {
-      if (name.indexOf('btnShow_') === 0) {
-          //$this.removeClass(name);
-          foundbtnmaps.push(name);
-      }
-  });
-});
-
-console.log(foundbtnmaps);
-
-/**/
-$.each(foundbtnmaps, function( index, value ) {
-var classitem=".btnShow_"+value.substring(value.length-2,value.length);
-
-var dialogiditem="#dialog_"+value.substring(value.length-2,value.length);
-var dvmapiditem="#dvMap_"+value.substring(value.length-2,value.length);
-var locinfoid="#loc_info_"+value.substring(value.length-2,value.length);
-console.log(classitem+" "+dialogiditem+" "+dvmapiditem+" "+locinfoid);
-
-//start of button click handler
-$(classitem).click(function () {
-//alert("Hey from map button"+classitem);
-
-var locinfo=$(locinfoid).val();
-values=locinfo.split(';');
-var latit=values[0];
-var longit=values[1];
-//alert("Latitude:"+latit+" Longitude:"+longit);
-$(dialogiditem).dialog({
-            modal: true,
-            title: "Google Map",
-            width: 600,
-            hright: 450,
-            resizable: true,
-            buttons: {
-                Close: function () {
-                    $(this).dialog('close');
-                    window.location.reload();
-                    
-                }
-            },
-            open: function () {
-                var mapOptions = {
-                    center: new google.maps.LatLng(latit, longit),
-                    zoom: 14,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                }
-                var map = new google.maps.Map($(dvmapiditem)[0], mapOptions);
-            }
-            
-        });
-    
-});//end of button click handler
-
-
-}); //end of each
-
-
-
-/*
-$.each(foundmaps, function( index, value ) {
-//alert( index + ": " + value +" length: "+value.length+"substr:"+value.substring(value.length-2,value.length)+" "+"\"."+value+"\"");
-//var classitem="\"."+value+"\"";
-
-
-//var classitem="."+value.substring(value.length-2,value.length);
-var classitem=".map_canvas_"+value.substring(value.length-2,value.length);
-//var mapmodalitem="#beach_details_modal_"+value.substring(value.length-2,value.length);
-
-
-$(classitem).gmap3({
-
- map:{
-    options:{
-     center: [35.338735200000000000, 25.144212599999946000],
-     zoom: 10
-    }
- }	,
- marker:{
-   latLng:[35.338735200000000000, 25.144212599999946000],
-   address: "Heraklion,Crete"
- },
-infowindow:{
-     address:"Heraklion,Crete",
-     options:{
-       content: "Our address: Heraklion,Crete!"
-     },
-     events:{
-       closeclick: function(infowindow){
-         alert("Close window?");
-       }
-     }
-  }
-
-});//end of map in modal
-
-
-console.log(classitem);
-}); //end of each
-
-*/
 });
 
 </script>
@@ -386,8 +184,6 @@ console.log(classitem);
 
 </head>
 <body>
-<?php include 'show_images.php';?> <!--include external php script for image retrieving from database-->
-<?php include 'hidden_modal.php';?> <!--include external php script for setting modal windows-->
 <div class="big_wrapper">   
 <div class="container">  
 	<div class="row">
@@ -409,26 +205,29 @@ console.log(classitem);
 			      <ul class="nav navbar-nav">
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
 				<li><a href="profile.php" id="link3">Profile</a></li>
-				<li><a href="gallery.php" id="link4">Gallery</a></li>  
+				<li><a href="gallery.php" id="link4">Gallery</a></li> 
 				<li><a href="contact.php" id="link6">Contact Us</a></li> 
  				<?php
 					$role=$_SESSION["role"];
 					
-					if ($role=="user"){
+					if ($role!="guest"){
 					
-					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 					
+					echo "";
+					
 					}
-					else if ($role=="guest"){
+					else{
+					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 
 					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
 					}
-					else if ($role=="admin"){
+
+					if ($role=="admin"){
 					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
 					
 					}
 					else{
 					echo "";
 					}
-				 ?>
+				    ?>
 				
 			      </ul>
 			    </div>
@@ -476,6 +275,7 @@ console.log(classitem);
 		</div>
 	</div>
 </div>
+
 <div class="container">
 	<div class="row">
                 <div class="col-xs-12">
@@ -520,20 +320,42 @@ console.log(classitem);
 <!--main area-->
 <?php
 $role=$_SESSION["role"];
-echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"];
+echo "Welcome, ".$role." ".$_SESSION["myusername"];
 //session_write_close (); 
 ?>
-<!-- 1i tetrada--------------------------------------------------------------------------------------------- -->
+     <div class="container">
+  
+            <div class="row">
+	       <div class="col-sm-3">
+	       </div>
+  		<div class="col-sm-6">
+			<div class="blog">
+			    <section class="post">
+				<h2 class="post-title" id="introtitle">Success!</h2>
+				<p class="post-excerpt" id="introtext">Image uploaded to our server!! </p>
+				<!--
+				<div data-translate="hello">Hello there, how are you?</div>
+				<div id="msgid1">Hello there, how are you?</div>
+				<div id="msgid2">Hello there, how are you?</div>-->
+			    </section>
+			</div>
+	       </div>
+	       <div class="col-sm-3">
+	       </div>
+	       <!--
+	       <div class="col-sm-8">
+			<div class="blog">
+			    <section class="post">
+				<h2 class="post-title">Blog Post Title</h2>
+				<p class="post-excerpt">Ice cream tart powder jelly-o. 
+				Gummies chocolate cake ice cream cookie halvah tiramisu jelly-o.</p>
+			    </section>
+			</div>
 
-<div class="container">
-           <div class="row">
-                <div class="col-md-12 col-centered text-center">
-                    <h3><span id="beaches">Our beaches </span></h3>
-                </div>
-            </div>  
-<?php print_images()?>
-           
-</div> <!--end of container-->
+	       </div>-->
+	    </div>
+  
+    </div>
 
 <div class="container">
   
@@ -584,36 +406,8 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
                   	  <p id="footercodeschool">&COPY; Monades Aristeias Logismikou - <a href="https://ma.ellak.gr/edu/course/view.php?id=49" target="_blank">2nd Code School</a></p>
                 	</div>
             </div>      
-     </div> 
-             
+     </div>  
 </div> <!--end of big_wrapper-->     
-<?php print_modal_windows()?>        
-<!-- Hidden modal forms Agioi_Apostoloi  static
-    
-     <div id="beach_details_modal_Agioi_Apostoloi" title="Beach Details Agioi Apostoloi" style="display:none;">
-        <div class="container beach_details_modal" title="Beach Details Agioi Apostoloi">
-           <div class="row">
-                <div class="col-md-12 col-centered text-center">
-                    <h1>Beach Information Agioi Apostoloi</h1>
-                </div>
-            </div>  
-           
-            <div class="row">
-             <div class="col-md-12 tours-items-container">
-                 <div style="background-color: #ccc; overflow: hidden;">
-                 <h3>Agioi Apostoloi</h3>
-                 <img src="images/beaches/Agioi-Apostoloi.jpg" alt="Agioi-Apostoloi" style="width:100%;">
-                 <p style="text-align: justify; font-size:14px;">text </p>
-                 <div style="background-color: #91e5b6;">
-                  main info
-                 </div>
-               </div>
-             </div>
-
-           </div>    
-       </div>
-     </div>--><!--end of hidden modal window agioi apostoloi static-->
-
-
+        
     </body>
 </html>

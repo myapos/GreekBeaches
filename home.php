@@ -220,28 +220,25 @@ jQuery(document).ready(function(){
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
 				<li><a href="profile.php" id="link3">Profile</a></li>
 				<li><a href="gallery.php" id="link4">Gallery</a></li> 
-				<li><a href="services.php" id="link5">Services</a></li> 
 				<li><a href="contact.php" id="link6">Contact Us</a></li> 
  				<?php
 					$role=$_SESSION["role"];
 					
-					if ($role!="guest"){
+					if ($role=="user"){
 					
-					echo "";
-					
+					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 					
 					}
-					else{
+					else if ($role=="guest"){
 					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
 					}
-
-					if ($role=="admin"){
+					else if ($role=="admin"){
 					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
 					
 					}
 					else{
 					echo "";
 					}
-				    ?>
+				 ?>
 				
 			      </ul>
 			    </div>

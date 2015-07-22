@@ -114,6 +114,15 @@ jQuery(document).ready(function(){
 		var link8_text_greek="Διαχείριση";
 		
 		var welcome_text_greek="Καλωσήρθατε, ";
+		
+		var contact_desc_greek="Φόρμα επικοινωνίας";
+		var contact_txt_desc_greek="Εάν επιθυμείτε να επικοινωνήσετε μαζί μας συμπληρώστε τα απαιτουμενα πεδία";
+	
+		var name_txt_greek="Όνομα:";
+		var email_txt_greek="Ηλεκτρονική διεύθυνση:";
+		var contact_txt_greek="Επαφή No:";
+		var message_txt_greek="Μήνυμα:";
+		var submit_txt_english="Send Message";
 
 		$("#title").html(title_greek);
 		$("#password").attr("placeholder", password_text_greek);
@@ -134,7 +143,14 @@ jQuery(document).ready(function(){
 		$("#link8").html(link8_text_greek);
 		
 		$("#welcomemsg").html(welcome_text_greek);
-		
+		$("#contact_desc").html(contact_desc_greek);
+		$("#contact_txt_desc").html(contact_txt_desc_greek);
+
+		$("#name_txt").html(name_txt_greek);
+		$("#email_txt").html(email_txt_greek);	
+		$("#contact_txt").html(contact_txt_greek);
+		$("#message_txt").html(message_txt_greek);	
+		$("#submit").val(submit_txt_greek);		
 	}
 
 	else if (lan=="EN"){
@@ -171,7 +187,16 @@ jQuery(document).ready(function(){
 		
 		var welcome_text_english="Welcome, ";
 
+		var contact_desc_english="Contact Form";
 
+		var contact_txt_desc_english="If you want us to contact you and send a message to us, please fill in the required fields";
+		
+		var name_txt_english="Name:";
+		var email_txt_english="Email:";
+		var contact_txt_english="Contact No:";
+		var message_txt_english="Message:";
+		var submit_txt_english="Send Message";
+		
 		$("#title").html(title_english);
 		$("#password").attr("placeholder", password_text_english);
 		$("#email").attr("placeholder", email_text_english);
@@ -189,7 +214,16 @@ jQuery(document).ready(function(){
 		$("#link7").html(link7_text_english);
 		$("#link8").html(link8_text_english);
 
-$("#welcomemsg").html(welcome_text_english);			
+		$("#welcomemsg").html(welcome_text_english);	
+		$("#contact_desc").html(contact_desc_english);	
+		$("#contact_txt_desc").html(contact_txt_desc_english);
+		$("#name_txt").html(name_txt_english);
+		$("#email_txt").html(email_txt_english);		
+		$("#contact_txt").html(contact_txt_english);	
+		$("#message_txt").html(message_txt_english);	
+		$("#submit").val(submit_txt_english);	
+		
+
 
 	}
 	
@@ -265,28 +299,25 @@ infowindow:{
 				<!--<li class="active"><a href="index.html" id="link2">Home</a></li>-->
 				<li><a href="profile.php" id="link3">Profile</a></li>
 				<li><a href="gallery.php" id="link4">Gallery</a></li> 
-				<li><a href="services.php" id="link5">Services</a></li> 
 				<li><a href="contact.php" id="link6">Contact Us</a></li> 
  				<?php
 					$role=$_SESSION["role"];
 					
-					if ($role!="guest"){
+					if ($role=="user"){
 					
-					echo "";
-					
+					echo "<li><a href=\"services.php\" id=\"link5\">Services</a></li> "; 					
 					}
-					else{
+					else if ($role=="guest"){
 					echo "<li><a href=\"register.php\" id=\"link7\">Register</a></li> ";
 					}
-
-					if ($role=="admin"){
+					else if ($role=="admin"){
 					echo "<li><a href=\"admin.php\" id=\"link8\">Admin Area</a></li> ";
 					
 					}
 					else{
 					echo "";
 					}
-				    ?>
+				 ?>
 				
 			      </ul>
 			    </div>
@@ -389,17 +420,18 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 				<p id="returnmessage"></p>
 				<div class="mainform">
 				<form id="contact-form" role="form">
-				<h3>Contact Form</h3>
-				<h4>If you want us to contact you and send a message to us, please fill in the required fields</h4>
+				<h3><span id="contact_desc">Contact Form</span></h3>
+				<h4><span id="contact_txt_desc">If you want us to contact you and send a message to us, 
+				please fill in the required fields</span></h4>
 				
 				  <div class="form-group">
-				    <label for="name">Name: <span>*</span></label>
+				    <label for="name"><span id="name_txt">Name: </span><span>*</span></label>
 				    <input type="text" class="form-control" id="name" placeholder="Name"/>
-				    <label for="email">Email: <span>*</span>:</label>
+				    <label for="email"><span id="email_txt">Email: </span><span>*</span>:</label>
 				    <input type="text" class="form-control" id="email-contact" placeholder="Email"/>
-				    <label for="contact">Contact No: <span>*</span></label>
-				    <input type="text" class="form-control" id="contact"" placeholder="10 digit Mobile no."/>
-				    <label for="message">Message: <span>*</span>:</label>
+				    <label for="contact"><span id="contact_txt">Contact No: </span><span>*</span></label>
+				    <input type="text" class="form-control" id="contact" placeholder="10 digit Mobile no."/>
+				    <label for="message"><span id="message_txt">Message: </span><span>*</span>:</label>
 				    <textarea class="form-control" id="message" placeholder="Message......."></textarea>
 				  </div>
 				   <input type="button" id="submit" value="Send Message" class="btn btn-default"/>
