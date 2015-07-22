@@ -320,9 +320,10 @@ $.ajax({
        mapTypeControl:false,
        navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
        }
-        document.getElementById("suggest_output").innerHTML=splitteddata1[0];
+       document.getElementById("suggest_output").innerHTML=splitteddata1[0];
+        
        var map = new google.maps.Map(document.getElementById("mapholder3"), myOptions);
-       var marker = new google.maps.Marker({position:latlon2,map:map,title:"You are here!"});
+       var marker = new google.maps.Marker({position:latlon3,map:map,title:"You are here!"});
      
     });
 
@@ -347,7 +348,67 @@ $.ajax({
       url: "my_services.php?func=selectBeach&mySelection="+mySelection+"&checked="+checked
     }).done(function(data) {
       console.log(data);
-      document.getElementById("selectBeachoutput").innerHTML=data;
+      var numOfBeaches = data.split("@").length -1;
+      var coordinates = data.split("@");
+      //var numOfBeaches = data.split("@")[0].split(":")[2];
+      //var splitdata = data.split("@")[1].split("!")[2];
+      var lats = [];
+      var lons = [];
+      var newid=0;
+      
+      mapblocks= document.getElementById("mapblock");
+    	
+			while (mapblocks.firstChild) {
+   			 mapblocks.removeChild(mapblocks.firstChild);
+		}
+		
+      for (i = 0; i < numOfBeaches; i++) {
+    		//text += "The number is " + i + "<br>";
+    		lats.push(coordinates[i].split(";")[0]);
+    		lons.push(coordinates[i].split(";")[1]);
+    		
+    		
+    	 latlon = new google.maps.LatLng(lats[i].split(":")[1], lons[i].split(":")[1]);
+    	 //alert("latlon: "+latlon+"lats[i]"+lats[i]+"lons[i]"+lons[i]);
+    	 var newmap = document.createElement("div");
+    	 var newmapid="mapholder"+i;
+    	 newmap.id = newmapid;
+    	 
+
+
+    	 mapblocks.appendChild(newmap);
+    	 //append new div element
+    	 
+       newmap.style.height = '250px';
+       //mapholder.style.width = '500px';
+
+       var myOptions = {
+       center:latlon,zoom:14,
+       mapTypeId:google.maps.MapTypeId.ROADMAP,
+       mapTypeControl:false,
+       navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+       }
+       //document.getElementById("suggest_output").innerHTML=splitteddata1[0];
+        
+       //var map = new google.maps.Map(document.getElementById("newmapid"), myOptions);
+       var map = new google.maps.Map(newmap, myOptions);
+       var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+       
+       
+		}
+		
+		
+		/*
+		var strlats="";
+		var strlons="";
+		for (v=0;v<lats.length-1;v++){
+		strlats=lats[v]+strlats;
+		strlons=lons[v]+strlons;
+		}
+      document.getElementById("selectBeachoutput").innerHTML="DCddcd "+strlats+" cwdsc "+strlons
+      +" csdcsdc "+coordinates[0].split(";")[0]+" csdcsdc "+coordinates[0].split(";")[1];*/
+      
+      //document.getElementById("selectBeachoutput").innerHTML=data;
       //get value from select element in form
     });
 
@@ -536,7 +597,8 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 					<!---->
 					 Nearest beach is:<div id="nearest_output"> </div>
 					 <div id="mapholder2"></div>
-					 Beach of selected category is:<div id="selectBeachoutput"> </div>
+					 Beaches of selected category are:<div id="selectBeachoutput"> </div>
+					 <div id="mapblock"></div>
 					 
 				</p>
 				<p class="post-excerpt" id="choose_beach">Select beaches from category 

@@ -250,7 +250,7 @@ if ($conn->connect_error) {
 } 
 else{
 //echo "Preparing to execute sql query!!!"."<br>";
-echo "My Selection is ".$mySelection." checked:".$checked."<br>";
+//echo "My Selection is ".$mySelection." checked:".$checked."<br>";
 
 //get all beaches from db who belong to this category 
 
@@ -260,12 +260,12 @@ $result = $conn->query($sql); //execute query
 
 
 if ($result->num_rows > 0) {
-
+//echo "Beaches in this category:".$result->num_rows."@";
 //step 1. for each image get coordinates
 while($row = $result->fetch_assoc()) {
   
-echo "beaches in this category:". substr($row["name"],0,$row["name"]-4)."<br> ";
-
+//echo " ".substr($row["name"],0,$row["name"]-4)." with rating: ".$row["rating"]."<br>@";
+echo "latitude:".$row["latitude"]."; longitude:".$row["longitude"]."@";
 }
  
 }
@@ -295,12 +295,13 @@ $result = $conn->query($sql); //execute query
 
 //echo results
 if ($result->num_rows > 0) {
-
+//echo "Beaches in this category:".$result->num_rows."@";
 //step 1. for each image get coordinates
 while($row = $result->fetch_assoc()) {
   
 //echo "beaches in this category:". substr($row["name"],0,$row["name"]-4)." rating: ".$row["rating"]."<br> ";
-echo " ".substr($row["name"],0,$row["name"]-4)." with rating: ".$row["rating"]."<br>";
+//echo " ".substr($row["name"],0,$row["name"]-4)." with rating: ".$row["rating"]."<br>@";
+echo "latitude:".$row["latitude"]."; longitude:".$row["longitude"]."@";
 }
 }
 
