@@ -662,7 +662,7 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
     					 <option value="Sand">Sand</option>
     					 <option value="Rock Beach">Rock Beach</option>		
 						</select>
-						<input type="checkbox" id="orderByRating" name="orderByRating"> <span id="order_by_desc">Order By Rating</span><br>
+						<input type="checkbox" class="checkbox-inline" id="orderByRating" name="orderByRating"> <span id="order_by_desc">Order By Rating</span><br>
   						<a class="btn btn-default" id="select_beach_btn" role="button"> <span id="select_beach_categ_btn">Select</span></a><br>		
   				</form>
 				

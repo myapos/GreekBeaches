@@ -654,7 +654,7 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
 				<p class="post-excerpt" id="choose_beach"><span id="select_beach_categ_txt">Select beaches from category</span> 
 				
 					<form role="form" method="post" id="select_beach_form">
-  						<select id="categoryBeach" name="categoryBeach">
+  						<select class="form-control" id="categoryBeach" name="categoryBeach">
    					 <option value="" disabled="disabled" selected="selected"><span id="select_beach_categ_list_txt">Please select category</span></option>
     					 <option value="Swimming">Swimming</option>
     					 <option value="Sea sports">Sea sport</option>
@@ -662,7 +662,7 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
     					 <option value="Sand">Sand</option>
     					 <option value="Rock Beach">Rock Beach</option>		
 						</select>
-						<input type="checkbox" id="orderByRating" name="orderByRating"> <span id="order_by_desc">Order By Rating</span><br>
+						<input type="checkbox" class="checkbox" id="orderByRating" name="orderByRating"> <span id="order_by_desc">Order By Rating</span><br>
   						<a class="btn btn-default" id="select_beach_btn" role="button"> <span id="select_beach_categ_btn">Select</span></a><br>		
   				</form>
 				

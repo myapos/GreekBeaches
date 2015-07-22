@@ -54,11 +54,11 @@ background-color:#CCC;
   border-color: #C0C0C0; 
   background-color: #C0C0C0; 
 }
-
+/*
 .ui-dialog-titlebar-close{
     display: none;
 }
-
+*/
 .my-btn:active {
   background: #C0C0C0;
 }
@@ -196,3 +196,6 @@ text-align: center;
     border: 1px solid red;
 }
 
+#introtext{
+	
+	}

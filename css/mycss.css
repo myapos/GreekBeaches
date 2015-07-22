@@ -196,3 +196,6 @@ text-align: center;
     border: 1px solid red;
 }
 
+#introtext{
+text-align: justify;	
+}

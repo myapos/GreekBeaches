@@ -78,14 +78,30 @@ jQuery(document).ready(function(){
 		$("#LangSelector").html(lan);
 
 		var title_greek="Ελληνικές παραλίες";
-		var intro_title_greek="Καλωσήρθατε!";
+		var intro_title_greek="Τι είναι η διαδικτυακή εφαρμογή GreekBeaches";
 
 
-		var intro_text_greek="Καλωσήρθατε στον διαδικτυακό μας τόπο. Στην παρούσα ιστοσελίδα μπορείτε να βρείτε χρήσιμες πληροφορίες"
-						+" για τις ελληνικές παραλίες. Η Ελλάδα είναι διάσημη για τον υπέροχο συνδυασμό ήλιου"
-						+" και θάλασσας. Ακόμα μπορείτε να μάθετε ιστορικές πληροφορίες για κάθε παραλία, τρόπο"
-						+" πρόσβασης και χρήσιμα κοντινά σημεία ενδιαφέροντος. Ελπίζουμε να βρείτε το υλικό μας"
-						+" ενδιαφέρον. Καλή πλοήγηση.";
+		var intro_text_greek="Η διαδικτυακή εφαρμογή GreekBeaches δίνει τη δυνατότητα στον "+
+		"επισκέπτη να προβάλει τις καλύτερες ελληνικές παραλίες χρησιμοποιώντας εικόνες και "+
+		"χάρτες της Google. Οι επισκέπτες της εφαρμογής μπορούν να έχουν τρεις ρόλους φιλοξενούμενοι, χρήστες"+
+		" και διαχειριστές. Σαν φιλοξενούμενος ο επισκέπτης μπορεί να μάθει χρήσιμες πληροφορίες"+
+		  "για τις παραλίες που υπάρχουν ήδη στην βάση δεδομένων μας. Από την άλλη"+
+		   "ο επισκέπτης μπορεί να εγγραφεί και να χρησιμοποιήσει τις υπηρεσίες του συστήματος μας. Σαν"+
+		   " χρήστης του συστήματος ο επισκέπτης μπορεί να λάβει ευκολότερα απόφαση στην επίσκεψη"+
+		    " μιας παραλίας αφού το σύστημα υπολογίζει και προβάλλει την κοντινότερη σε αυτόν "+
+		      "παραλία (λειτουργικότα geolocation). Επι πλέον μπορεί να επιλέξει να προβάλλει"+
+		     "  μια παραλια σύμφωνα με την κατηγορία της για παράδειγμα θαλάσσια σπορ ή ψάρεμα."+
+		      "  Επίσης το σύστημα μπορεί να προτείνει τυχαία στον επισκέπτη ποια παραλία να"+
+		       "  επισκεφθεί εάν δεν μπορεί να αποφασίσει. Επί πρόσθετα ο επισκέπτης του"+
+		        "  συστήματος μπορεί να συνδεθεί σαν διαχειριστής και να έχει ακόμα μεγαλύτερες"+
+		         "  δυνατότητες. Σαν διαχειριστής μπορεί να μεταφορτώσει στην ΒΔ μια εικόνα παραλίας"+
+		          "  μαζί με τις συνοδευτικές πληροφορίες  όπως γεωγραφικό μήκος και πλάτος , περιγραφή,"+
+		          "   κατηγορία και αξιολόγηση. Τέλος το περιεχόμενο της σελίδας διατιθεται σε δυο γλώσσες"+
+		            "  Ελληνικά και Αγγλικά. Εάν επιθυμείται να επικοινήσετε με τον προγραμματιστή του συστήματος"+
+		              " μπορείτε να το πράξετε επισκεπτόμενοι τις αντίστοιχες σελίδες.<br>Αυτή η εφαρμογή"+
+		              "  είναι μια εργασία για τους σκοπούς του δεύτερου σχολείου προγραμματισμού που "+
+		               " έγινε στο τμήμα Επιστήμης Υπολογιστών Πανεπιστημίου Κρήτης  για τις μονάδες "+
+		               " Αριστείας Λογισμικού <br><br> Ευχαριστώ <br> Αποστολάκης Μύρων";
 
 		var footerdevelopment_text_greek="Κατασκευή ιστοσελίδας <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Αποστολάκης "
 						+" Μύρων</a>";
@@ -110,6 +126,7 @@ jQuery(document).ready(function(){
 		$("#email").attr("placeholder", email_text_greek);
 		$("#login").html(login_text_greek);
 		$("#introtitle").html(intro_title_greek);
+		$("#introtext").css("text-align","justify");
 		$("#introtext").html(intro_text_greek);
 		$("#footerdevelopment").html(footerdevelopment_text_greek);
 		$("#footercodeschool").html(footercodeschool_text_greek);
@@ -134,8 +151,24 @@ jQuery(document).ready(function(){
 		//$("#myInput").val(lan);
 		$("#LangSelector").html(lan);
 		var title_english="Greek Beaches";
-		var intro_title_english="Profile!";
-		var intro_text_english="Profile page";
+		var intro_title_english="What is GreekBeaches";
+		var intro_text_english="GreekBeaches web application enables viewing of "+
+				"the best greek beaches in Goolgle Maps and images. The GreekBeaches visitors can have "+
+				"three roles guest, user and system administrator.As a guest the visitor can learn "+
+				"useful information about the beaches that exist in our database. On the other hand the"+ 
+				"visitor can register and make use of the useful services that our system provide. As a"+ 
+				"user of our system the visitor can be helped to select the nearest beach due to his "+
+				"recent location (geolocation functionality). Furthermore he can select to display a "+
+				"beach according to it's category, for example sea sports or fishing. Also the system "+
+				"can suggest  to the user a beach if he cannot decide randomly. Additionally the user "+
+				"of our system can be logged in as administrator and have major potential. As administrator he"+ 
+				"can upload to our database a beach image with it’s information, such as latitude, longitude, "+
+				"description, category and  ratingFinally the content of the web application is available "+
+				"in two languages Greek and English. If you want to "+
+				"contact the system developer you can do so by visiting the corresponding pages."+
+				"<br>This is a project for the purposes of code school 2 that took place "+
+				"in Computer Science Department of University Of Crete and Monades Aristeias Logismikou <br><br>"+
+				"Thank you<br> Apostolakis Myron";
 
 		var footerdevelopment_text_english="Website development <a href=\"http://myapos.oncrete.gr\" target=\"_blank\">Apostolakis"
 						    +" Myron</a>";
@@ -163,6 +196,7 @@ jQuery(document).ready(function(){
 		$("#login").html(login_text_english);
 		$("#introtitle").html(intro_title_english);
 		$("#introtext").html(intro_text_english);
+		$("#introtext").css("text-align","justify");
 		$("#footerdevelopment").html(footerdevelopment_text_english);
 		$("#footercodeschool").html(footercodeschool_text_english);
 		$("#link1").html(link1_text_english);
@@ -332,8 +366,28 @@ echo "<span id=\"welcomemsg\">Welcome, </span>".$role." ".$_SESSION["myusername"
   		<div class="col-sm-6">
 			<div class="blog">
 			    <section class="post">
-				<h2 class="post-title" id="introtitle">Profile!</h2>
-				<p class="post-excerpt" id="introtext">Profile page </p>
+				<h2 class="post-title" id="introtitle">What is GreekBeaches</h2>
+				<p class="post-excerpt" id="introtext">GreekBeaches web application enables viewing of 
+				the best greek beaches in Goolgle Maps and images. The GreekBeaches visitors can have 
+				three roles guest, user and system administrator.As a guest the visitor can learn 
+				useful information about the beaches that exist in our database. On the other hand the 
+				visitor can register and make use of the useful services that our system provide. As a 
+				user of our system the visitor can be helped to select the nearest beach due to his 
+				recent location (geolocation functionality). Furthermore he can select to display a 
+				beach according to it's category, for example sea sports or fishing. Also the system 
+				can suggest  to the user a beach if he cannot decide randomly. Additionally the user 
+				of our system can be logged in as administrator and have major potential. As administrator he 
+				can upload to our database a beach image with it’s information, such as latitude, longitude, 
+				description, category and  ratingFinally the content of the web application is available 
+				in two languages Greek and English. If you want to 
+				contact the system developer you can do so by visiting the corresponding pages.
+				<br>This is a project for the purposes of code school 2 that took place 
+				in Computer Science Department of University Of Crete 
+				and Monades Aristeias Logismikou
+				<br><br>				
+				Thank you<br>
+				Apostolakis Myron
+				</p>
 				<!--
 				<div data-translate="hello">Hello there, how are you?</div>
 				<div id="msgid1">Hello there, how are you?</div>
