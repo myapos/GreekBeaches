@@ -414,7 +414,7 @@ echo "Welcome, ".$role." ".$_SESSION["myusername"];
 				  <div class="form-group">
 				    <label for="category"><span id="category_txt">Category:</span></label>
 				    <!--<textarea class="form-control" rows="5" id="rating" name="rating"></textarea>-->
-				   <select id="category" name="category">
+				   <select class="form-control" id="category" name="category">
    				 <option value="" disabled="disabled" selected="selected">Please select category</option>
     				 <option value="Swimming">Swimming</option>
     				 <option value="Sea sports">Sea sport</option>
